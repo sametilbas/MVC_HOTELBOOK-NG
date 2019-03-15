@@ -1,0 +1,89 @@
+﻿@model ChoseninMvc.Models.SelectedEmployee
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<h2>Searchable and MultiSelect DropDown in Mvc</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            <label>Select Employee</label>
+            @*Normal DropDown*@
+            @Html.DropDownListFor(model => model.SelectedEmployeeIDs, new SelectList(Model.EmployeeCollection, "EmployeeID", "Name"), new { id = "normalDropDown" })
+
+            @*MultiSelect DropDown*@
+            @*@Html.ListBoxFor(model => model.SelectedIDArray, new MultiSelectList(Model.EmployeeCollection, "EmployeeID", "Name"), new { id = "multiSelectDropDown", multiple = "multiple" })*@
+
+
+            <input type="submit" name="name" value="Submit" />
+        </div>
+    </div>
+}
+
+@section scripts{
+
+    <script>
+        $(function () {
+            //normal dropdown
+            //$("#normalDropDown").chosen({
+            //    disable_search_threshold : 5
+            //});
+
+            //multiselect DropDown
+            //$("#multiSelectDropDown").chosen({
+            //    width : "100%"
+            //});
+        });
+
+    </script>
+}
+
+
+
+
+@model bitirme.Models.ozellik
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>otelozellik</title>
+    <link href="~/Content/Choosen/chosen.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            @Html.HiddenFor(model => model.ozellikID)
+
+            <div class="form-control">
+                @Html.ListBoxFor(model => model.selectedID, new MultiSelectList(Model.kategoris, "kategoriID", "kategoriad"), new { id = "multiSelectDropdown", multiple = "multiple" })
+                <input type="submit" name="name" value="kaydet" />
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+    @section scripts{
+        <script>
+            $(function (){
+            //normal
+            //$("#normalDropdown").chosen({
+           // disable_search_:true});
+
+            $("#multiSelectDropdown").chosen({
+            });
+
+            });
+        </script>
+    }
+</body>
+</html>

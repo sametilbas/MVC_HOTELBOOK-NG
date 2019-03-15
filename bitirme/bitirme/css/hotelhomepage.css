@@ -1,0 +1,178 @@
+﻿* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /*biar titik titiknya ilang*/
+    list-style-type: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+main .container {
+    padding: 30px 0;
+}
+
+nav {
+    height: 55px;
+    background-color: transparent;
+}
+
+    nav ul {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+        text-align: center;
+    }
+
+    nav li {
+        color: #f9f9f9;
+        line-height: 55px;
+        display: inline-block;
+        padding: 0px 10px;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    }
+        /*style untuk ::after nya logo*/
+        nav li:nth-child(3)::after {
+            width: 0 !important;
+        }
+
+        nav li:nth-child(3) {
+            color: #dddddd;
+        }
+
+            nav li:nth-child(3) a {
+                font-size: 1.6rem;
+            }
+
+        nav li::after {
+            transition: all 300ms;
+            content: '';
+            display: block;
+            width: 0;
+            height: 3px;
+            transform: translateY(-6px);
+            background-color: #dddddd;
+        }
+
+        nav li:hover::after {
+            width: 100%;
+        }
+
+header {
+    position: relative;
+    height: 100vh;
+    background-image: url('/resim/hotelhomepage.png');
+    background-size: cover;
+    background-position: center;
+}
+
+    header h1 {
+        position: absolute;
+        top: calc(50% - 16px);
+        left: 50%;
+        font-size: 3rem;
+        transform: translateX(-50%) translateY(-50%) skewX(-20deg);
+        color: #f7f7f7;
+        text-shadow: 3px 6px 3px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+
+        header h1 span {
+            display: block;
+        }
+
+            header h1 span:first-child {
+                transform: translateX(-25%);
+            }
+
+            header h1 span:last-child {
+                transform: translateX(25%);
+            }
+
+.btn {
+    transition: all 250ms;
+    display: inline-block;
+    padding: 10px 1.5rem;
+    border: 1px solid white;
+    border-radius: 25px;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: 15px;
+    background-color: white;
+    color: #4ac3ef;
+    transform: translateX(-50%) translateY(100%);
+}
+
+    .btn:hover {
+        text-shadow: none;
+        color: #4ac3ef;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+main {
+    height: 100vh;
+}
+
+    main #promotion_tag {
+        text-transform: uppercase;
+        color: #333333;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    main figure {
+        float: left;
+        color: #565656;
+        padding: 0 15px;
+        width: calc(100% / 3);
+    }
+
+        main figure:first-of-type {
+            padding-left: 0px;
+        }
+
+        main figure:last-of-type {
+            padding-right: 0px;
+        }
+
+        main figure img {
+            width: 100%;
+            height: 300px;
+        }
+
+        main figure figcaption {
+            padding: 15px 0;
+        }
+
+footer {
+    height: 55px;
+    line-height: 55px;
+    color: #e8e8e8;
+    background-color: #07323a;
+}
+
+    footer .container {
+        height: 100%;
+    }
+
+    footer small {
+        text-transform: capitalize;
+        float: left;
+    }
+
+    footer ul {
+        float: right;
+    }
+
+        footer ul li {
+            float: left;
+            padding: 0 10px;
+        }

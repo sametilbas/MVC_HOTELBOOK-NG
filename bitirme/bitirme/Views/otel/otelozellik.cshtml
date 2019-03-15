@@ -1,0 +1,48 @@
+﻿
+@model bitirme.Models.ozellik
+@{
+    ViewBag.Title = "otelozellik";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>otelozellik</title>
+    <link href="~/Content/Choosen/chosen.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.HiddenFor(model => model.ozellikID)
+
+            <div class="form-control">
+                @Html.ListBoxFor(model => model.selectedID, new MultiSelectList(Model.kategoris, "kategoriID", "kategoriad"), new { id = "multiSelectDropdown", multiple = "multiple" })
+                <input type="submit" name="name" value="kaydet" />
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+    @section scripts{
+        <script>
+            $(function (){
+            //normal
+            //$("#normalDropdown").chosen({
+           // disable_search_:true});
+
+            $("#multiSelectDropdown").chosen({
+            width:"100%"
+            });
+
+            });
+        </script>
+    }
+</body>
+</html>
+
+

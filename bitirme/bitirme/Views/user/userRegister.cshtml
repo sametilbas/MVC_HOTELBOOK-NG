@@ -1,0 +1,61 @@
+﻿@model bitirme.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/loginandregister.css">
+
+</head>
+<body>
+    <div class="welcomeScreen">
+        <h1>Sizi Bekliyorduk Bizde Şimdi Nereye?</h1>
+    </div>
+
+
+    <div class="login">
+        <fieldset>
+            <legend>Giriş</legend>
+            @using (Html.BeginForm("userLogin", "user", FormMethod.Post))
+            {
+                <input type="text" id="userNickName" name="userNickName" placeholder="Kullanıcı adı">
+                <input type="password" id="userPassword" name="userPassword" placeholder="Şifreniz">
+                <button class="btn-login">Giriş</button>}
+            <button class="btn-register" onclick="goToRegisterPage();">Henüz Üye Değilmisiniz?</button>
+
+        </fieldset>
+    </div>
+
+    <div class="register">
+        <fieldset>
+            <legend>Kayıt</legend>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.Message != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-10">@ViewBag.Message</div>
+                </div>
+            }
+            @using (Html.BeginForm("userRegister", "user", FormMethod.Post))
+            {
+                <input type="text" id="userName" name="userName" placeholder="İsminiz">
+                <input type="text" id="userLastname" name="userLastName" placeholder="Soyisminiz">
+                <input type="text" id="userPhone" name="userPhone" placeholder="Telefonunuz">
+                <input type="email" id="userEmail" name="userEmail" placeholder="your@gmail.com">
+                <input type="text" id="userNickName" name="userNickName" placeholder="Kullanıcı Adınız">
+                <input type="text" id="userPassword" name="userPassword" placeholder="Şifreniz">                
+                <button type="submit" class="btn-register">Kayıt</button>}
+            <button class="btn-login" onclick="goToLoginPage();">
+                Üyemisiniz?
+            </button>
+
+        </fieldset>
+    </div>
+    <script src="~/js/loginandregister.js"></script>
+</body>
+</html>

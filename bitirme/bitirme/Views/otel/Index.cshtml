@@ -1,0 +1,105 @@
+﻿@model IEnumerable<bitirme.Models.oteloda>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/hotelhomepage.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: lemonchiffon;
+        }
+
+        .table-fixed {
+            width: 100%;
+            background-color:rgba(207, 241, 237, 0.65);
+        }
+
+            .table-fixed tbody {
+                height: 600px;
+                overflow-y: auto;
+                width: 100%;
+            }
+
+            .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+                display: block;
+            }
+
+                .table-fixed tbody td {
+                    float: left;
+                }
+
+                .table-fixed thead tr th {
+                    float: left;
+                    background-color:rgba(136, 207, 231, 0.83);
+                    border-color: rgba(143, 208, 244, 0.75)
+                }
+    </style>
+</head>
+<body>
+        <nav>
+            <ul>
+                <li><a style="font-size:20px;color:deepskyblue;font-weight:100;font-weight:bold;" href="@Url.Action("otelozellik","otel",new {otelid=Session["otelID"] })">Özellik</a></li>
+                <li><a style="font-size:20px;color:deepskyblue;font-weight:100;font-weight:bold;" href="@Url.Action("otelodaEkle","otel",new { otelid=Session["otelID"]})">Odalar</a></li>
+                <li><a style="font-size:20px;color:deepskyblue;font-weight:100;font-weight:bold;" href="@Url.Action("otelupdate","otel",new { otelid=Session["otelID"]})">Profil</a></li>
+                <li><a style="font-size:20px;color:deepskyblue;font-weight:100;font-weight:bold;" href="@Url.Action("otelresimEkle","otel",new { otelid=Session["otelID"]})">Resim</a></li>
+                <li><a style="font-size:20px;color:deepskyblue;font-weight:100;font-weight:bold;" href="#!">Rezervasyon</a></li>
+                <li><a style="font-size:20px;color:deepskyblue;font-weight:100;font-weight:bold;" href="#!">Çıkış</a></li>
+            </ul>
+        </nav><br /><br /><br />
+        <section>
+            <div class="container">
+                <table class="table table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-3">
+                                @Html.DisplayNameFor(model => model.odaAdi)
+                            </th>
+                            <th class="col-xs-3">
+                                @Html.DisplayNameFor(model => model.odakisi)
+                            </th>
+
+                            <th class="col-xs-3">
+                                @Html.DisplayNameFor(model => model.odaucret)
+                            </th>
+                            <th class="col-xs-3">İşlemler</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="col-xs-3">
+                                    @Html.DisplayFor(modelItem => item.odaAdi)
+                                </td>
+                                <td class="col-xs-3">
+                                    @Html.DisplayFor(modelItem => item.odakisi)
+                                </td>
+                                <td class="col-xs-3">
+                                    @Html.DisplayFor(modelItem => item.odaucret)
+                                </td>
+                                <td class="col-xs-3">
+                                    @Html.ActionLink("Düzenle", "otelodaEkle", new { bid = item.odaID })
+                                    @Html.ActionLink("Sil", "otelodaEkle", new { id = item.odaID })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

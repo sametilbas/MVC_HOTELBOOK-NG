@@ -1,0 +1,133 @@
+﻿@model bitirme.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="~/css/otelprofile.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="mainwrap">
+        <header>
+            <ul id="menu">
+                <li><a class="profile" href="#profile" title="Profile">Profil</a><span>Some information about me</span></li>
+                <li><a class="resume" href="#resume" title="Resume">Resim Ekle</a><span>Professional information</span></li>
+                <li><a class="contact" href="#contact" title="Contact">Bizimle İletişime Geç</a><span>Get in touch</span></li>
+            </ul>
+        </header>
+        <div style="clear:both"></div>
+        <div id="content">
+            <div id="profile" class="section">
+                <div class="column col3">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>User</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.userID)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.userLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userLastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.userPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userPhone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.userEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userEmail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userNickName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.userNickName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userNickName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+
+
+                    </div>
+                </div>
+
+                <div id="contact" class="section">
+                    <div class="column col3">
+                        <h3>Samet İlbaş</h3>
+                        <p>Kayseri,Türkiye</p>
+                        <p>
+                            Web: ilbassamet.com <br />
+                            E-mail: lbssmt66@gmail.com
+                        </p>
+                    </div>
+                    <div class="column col5 pl-50">
+                        <h3>Mesaj Gönder</h3>
+                        <form id="contactform">
+                            <p class="column col4"><label for="name">Ad:</label><input type="text" name="name" id="name" /></p>
+                            <p class="column col4"><label for="email">E-mail:</label><input type="text" name="email" id="email" /></p>
+                            <p class="column col8"><label for="message">Mesaj:</label><textarea rows="5" name="message" id="message"></textarea></p>
+                            <p class="column col8"><input class="button" type="button" value="Gönder" /></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer">
+                &copy; @DateTime.Now.Year
+            </div>
+
+        </div>
+    </div>
+    <script src="/js/otelprofile.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+﻿@model bitirme.Models.otel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/css/loginandregister.css">
+</head>
+<body>
+    <div class="welcomeScreen">
+        <h1>Sizi Bekliyorduk Bizde Şimdi Nereye?</h1>
+    </div>
+
+    <div class="login">
+        <fieldset>
+            <legend>Giriş</legend>
+            @using (Html.BeginForm("HotelLogin", "otel", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="text" id="otelkullaniciAdi" name="otelkullaniciAdi" placeholder="Kullanıcı adı">
+                <input type="password" id="otelSifre" name="otelSifre"  placeholder="Şifreniz">
+                <button class="btn-login">Giriş</button>
+            }
+            <button class="btn-register" onclick="goToRegisterPage();">Henüz Üye Değilmisiniz?</button>
+
+        </fieldset>
+    </div>
+
+    <div class="register">
+        <fieldset>
+            <legend>Kayıt</legend>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @if (ViewBag.Message != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-10">@ViewBag.Message</div>
+                </div>
+            }
+            @using (Html.BeginForm("OtelRegister", "otel", FormMethod.Post))
+            {
+                <input type="text" id="otelAdi" name="otelAdi" placeholder="İsminiz">
+                <input type="email" id="otelEmail" name="otelEmail" placeholder="your@email.com">
+                <input type="text" id="otelTel" name="otelTel" placeholder="Telefonunuz">
+                <input type="text" id="sehir" name="sehir" placeholder="Şehir@ANTALYA">
+                <input type="text" id="ilce" name="ilce" placeholder="İlce@MANAVGAT">
+                <input type="text" id="otelkullaniciAdi" name="otelkullaniciAdi" placeholder="Kullanıcı Adınız">
+                <input type="password" id="otelSifre" name="otelSifre" placeholder="Şifrenizi Giriniz" required>
+                <button type="submit" class="btn-register">Kayıt</button>}
+            <button class="btn-login" onclick="goToLoginPage();">
+                Üyemisiniz?
+            </button>
+
+        </fieldset>
+    </div>
+    <script src="~/js/loginandregister.js"></script>
+</body>
+</html>
