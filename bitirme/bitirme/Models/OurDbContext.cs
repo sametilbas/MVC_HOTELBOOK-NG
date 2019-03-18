@@ -18,6 +18,7 @@ namespace bitirme.Models
         public DbSet<otelresim> otelresims { get; set; }
         public DbSet<oteloda> otelodas { get; set; }
         public DbSet<User> users { get; set; }
+        public DbSet<sehir> sehirs { get; set; }
     }
    
 }

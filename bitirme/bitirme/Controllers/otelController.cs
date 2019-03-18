@@ -22,18 +22,21 @@ namespace bitirme.Controllers
         }
         public ActionResult OtelRegister()
         {
+            Session.Abandon();
             return View();
         }
         [HttpPost]
         public ActionResult OtelRegister(bitirme.Models.otel otel)
         {
-            if (ModelState.IsValid)
+            using (OurDbContext db=new OurDbContext())
             {
-                db.otels.Add(otel);
-                db.SaveChanges();
-                return RedirectToAction("OtelRegister");
+                if (ModelState.IsValid)
+                {                   
+                        db.otels.Add(otel);
+                        db.SaveChanges();
+                        return RedirectToAction("OtelRegister");
+                }
             }
-
             return View(otel);
         }
         public ActionResult HotelLogin()
@@ -76,34 +79,10 @@ namespace bitirme.Controllers
             k.otelEmail = otel.otelEmail;
             k.otelTel = otel.otelTel;
             k.adres = otel.adres;
-
+            k.otelaciklama = otel.otelaciklama;
             db.SaveChanges();
 
             return View("Index", db.otels);
-        }
-        public ActionResult otelresimEkle()
-        {
-            return View();
-        }//resim ekleme hatalı
-        [ValidateAntiForgeryToken]
-        [HttpPost]
-        public ActionResult otelresimEkle(otelresim res, HttpPostedFileBase otelresimAdi, int? otelid)
-        {
-            if (ModelState.IsValid)
-            {
-                WebImage img = new WebImage(otelresimAdi.InputStream);
-                FileInfo imginfo = new FileInfo(otelresimAdi.FileName);
-                string newimg = Guid.NewGuid().ToString() + imginfo.Extension;
-                img.Resize(400, 400);
-                img.Save("~/images/");
-                res.otelresimAdi = "/images" + newimg;
-
-                otelid = res.otelID;
-
-                db.otelresims.Add(res);
-                db.SaveChanges();
-            }
-            return RedirectToAction("otelresimEkle");
         }
         public ActionResult otelodaEkle()
         {
@@ -153,6 +132,27 @@ namespace bitirme.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("otelozellik", new { id = 0 });
+        }
+
+        public ActionResult resim()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult resim(IEnumerable<HttpPostedFileBase> ResimDosya ,int? otelid,bitirme.Models.otelresim or)//Bu resimde otelid çekilmiyo onu düzelt
+        {
+            if (ResimDosya != null)
+            {
+                foreach (var item in ResimDosya)//kaç adet resim seçildiyse, o kadar kez çalışacak
+                {
+                    item.SaveAs(Server.MapPath("~/Resim/{item.FileName}"));//resim klasörüne resimleri kaydetme
+                    or.otelresimAdi = item.FileName;
+                    db.otelresims.Add(or);
+                }
+                db.SaveChanges();//veri tabanına kayıt işlemi
+
+            }
+            return RedirectToAction("otelupdate");
         }
     }
 }

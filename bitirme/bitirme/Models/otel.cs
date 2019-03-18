@@ -27,10 +27,7 @@ namespace bitirme.Models
         public int otelTel { get; set; }
         [Required(ErrorMessage = "Lütfen boş alanları doldurunuz..")]
         public string sehir { get; set; }
-        [Required(ErrorMessage = "Lütfen boş alanları doldurunuz..")]
-        public string ilce { get; set; }
-
         public string adres { get; set; }
-
+        public string otelaciklama { get; set; }
     }
 }

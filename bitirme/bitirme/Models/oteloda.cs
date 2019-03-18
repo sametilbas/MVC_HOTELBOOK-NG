@@ -15,5 +15,6 @@ namespace bitirme.Models
         public string odaAdi { get; set; }
         public int odakisi { get; set; }
         public int odaucret { get; set; }
+        public string aciklama { get; set; }
     }
 }

@@ -122,7 +122,6 @@
     <Content Include="js\otelprofile.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\smoothscroll.js" />
-    <Content Include="resim\hotelhomepage.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -268,6 +267,7 @@
     <Compile Include="Models\otelresim.cs" />
     <Compile Include="Models\OurDbContext.cs" />
     <Compile Include="Models\ozellik.cs" />
+    <Compile Include="Models\sehir.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -299,6 +299,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\otel\otelozellik.cshtml" />
+    <Content Include="Views\otel\resim.cshtml" />
+    <Content Include="Views\Home\sehir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -309,6 +311,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
+    <Folder Include="Resim\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

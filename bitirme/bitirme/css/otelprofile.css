@@ -149,7 +149,7 @@ Span 8:    100%
 }
 
 #content {
-    height: 450px;
+    height: 620px;
     overflow: hidden;
     position: relative;
 }
@@ -161,7 +161,7 @@ Span 8:    100%
 
 .section {
     float: left;
-    height: 450px;
+    height: 620px;
     margin-right: 50px;
     position: relative;
     width: 100%;

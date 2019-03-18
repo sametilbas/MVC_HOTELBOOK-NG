@@ -1,0 +1,27 @@
+﻿@model bitirme.Models.otelresim
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("resim", "otel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.HiddenFor(model => model.otelresimId)
+            @Html.Label("Resimler:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" multiple name="ResimDosya" id="ResimDosya" class="form-control" /><br />
+                <span class="glyphicon glyphicon-info-sign">&nbsp;</span>
+                <span><i>Resim için Lütfen geçerli bir resim formatı kullanın.</i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@*@Html.Label("Resimler:", htmlAttributes: new { @class = "control-label col-md-2" })*@
