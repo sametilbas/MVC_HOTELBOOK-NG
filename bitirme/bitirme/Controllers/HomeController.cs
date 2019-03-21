@@ -1,6 +1,7 @@
 ﻿using bitirme.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,31 +10,36 @@ namespace bitirme.Controllers
 {
     public class HomeController : Controller
     {
+        OurDbContext db = new OurDbContext();
         // GET: Home
         public ActionResult Index()
         {
+            var x = db.sehirs.Where(a => a.sehirID > 0).ToList();
+            return View(x);
+        }
+        public ActionResult oteldetay()
+        {
             return View();
         }
-        public ActionResult sehir ()
+        public ActionResult res()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult sehir(IEnumerable<HttpPostedFileBase> SehirResim,bitirme.Models.sehir s)//Bu resimde otelid çekilmiyo onu düzelt
+        public ActionResult res(bitirme.Models.sehir s)
         {
-            if (SehirResim != null)
+            string fileName = Path.GetFileNameWithoutExtension(s.res.FileName);
+            string extension = Path.GetExtension(s.res.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            s.sehirresim = "~/images/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/images/"), fileName);
+            s.res.SaveAs(fileName);
+            using (OurDbContext db=new OurDbContext())
             {
-                OurDbContext db = new OurDbContext();
-                foreach (var item in SehirResim)//kaç adet resim seçildiyse, o kadar kez çalışacak
-                {
-                    item.SaveAs(Server.MapPath("~/images/{item.FileName}"));//resim klasörüne resimleri kaydetme
-                    s.sehirresim = item.FileName;
-                    db.sehirs.Add(s);
-                }
-                db.SaveChanges();//veri tabanına kayıt işlemi
-
+                db.sehirs.Add(s);
+                db.SaveChanges();
             }
-            return RedirectToAction("sehir");
+            return View();
         }
     }
 }   

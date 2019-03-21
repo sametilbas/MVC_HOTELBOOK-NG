@@ -301,6 +301,8 @@
     <Content Include="Views\otel\otelozellik.cshtml" />
     <Content Include="Views\otel\resim.cshtml" />
     <Content Include="Views\Home\sehir.cshtml" />
+    <Content Include="Views\Home\oteldetay.cshtml" />
+    <Content Include="Views\Home\res.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -311,7 +313,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
-    <Folder Include="Resim\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

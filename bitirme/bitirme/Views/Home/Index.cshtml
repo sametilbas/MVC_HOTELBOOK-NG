@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<bitirme.Models.sehir>
 @{
     Layout = null;
 }
@@ -9,10 +9,61 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        .areabox {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+            .areabox img {
+                max-width: 100%;
+            }
+
+            .areabox a.demolink {
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                width: max-content;
+                background: none;
+                color: #474747;
+                font-size: 12px;
+                padding-right: 2em;
+                padding-left: 2em;
+                border-color: #ddd;
+            }
+
+                .areabox a.demolink i {
+                    margin: 0 .4rem;
+                    font-size: 16px;
+                    color: #333;
+                }
+    </style>
 </head>
 <body>
-
-    <div> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <header>
+        <br /><br /><br /><br /><br /><br />
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-md-3">      
+                            <div class="card areabox" style="width: 18rem;">                              
+                                <img src="@Url.Content(x.sehirresim)" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text text-center">@x.sehirAd</p>
+                                    <a href="@Url.Action("oteldetay","Home")" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
