@@ -26,7 +26,7 @@ namespace bitirme.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult res(bitirme.Models.sehir s)
+        public ActionResult res(bitirme.Models.sehir s)//Burası şehir ekleme
         {
             string fileName = Path.GetFileNameWithoutExtension(s.res.FileName);
             string extension = Path.GetExtension(s.res.FileName);
@@ -40,6 +40,6 @@ namespace bitirme.Controllers
                 db.SaveChanges();
             }
             return View();
-        }
+        }    
     }
 }   

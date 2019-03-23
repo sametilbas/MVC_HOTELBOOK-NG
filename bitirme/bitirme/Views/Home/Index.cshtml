@@ -9,6 +9,13 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="~/css/homepage.css" rel="stylesheet" />
     <style>
         .areabox {
             border: 1px solid #ddd;
@@ -40,19 +47,128 @@
     </style>
 </head>
 <body>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <header>
-        <br /><br /><br /><br /><br /><br />
+    <header class="main-header" id="Home">
+        <div class="main-navbar-menu">
+            <div class="rodcontain">
+                <div class="rod">
+                </div>
+            </div>
+        </div>
+        <div class="list-container">
+            <div class="container-content">
+                <div class="content-item">
+                    <div class="item-link">
+                        <div class="string-1">
+                        </div>
+                        <div class="group-1">
+                            <a style="color:rgba(0, 0, 0, 0.65)" href="#Home">Anasayfa</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-left:20px;" class="content-item">
+                    <div class="item-link">
+                        <div class="string-2">
+                        </div>
+                        <div class="group-2">
+                            <a style="color:rgba(0, 0, 0, 0.65)" href="#Services" target="_blank">Hakkımızda</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="item-link">
+                        <div class="string-3">
+                        </div>
+                        <div class="group-1">
+                            <a style="color:rgba(0, 0, 0, 0.65)" href="#Portfolio" target="_blank">Şehirler</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="item-link">
+                        <div class="string-4">
+                        </div>
+                        <div class="group-2">
+                            <a style="color:rgba(0, 0, 0, 0.65)" href="@Url.Action("OtelRegister","otel")" target="_blank">Otel Giriş/Kayıt</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <div class="item-link">
+                        <div class="string-5">
+                        </div>
+                        <div class="group-1">
+                            <a style="color:rgba(0, 0, 0, 0.65)" href="@Url.Action("userRegister","user")" target="_blank"> Giriş/Kayıt</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="header-heading">
+                Hadi Tatile
+            </h1>
+        </div>
     </header>
-    <div class="container">
+    <section id="Services">
+        <div class="Services-container">
+            <div class="Services-heading">
+                Otel için yardımamı ihtiyacınız var!
+            </div>
+            <div class="Services-afterheading">
+                Gitmek İstediğiniz Şehri Seçiniz
+            </div>
+        </div>
+        @foreach (var x in Model)
+        {
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="services-grid-item">
+                    <div class="services-section">
+                        <div class="picture-section-content">
+                            <img src="@Url.Content(x.sehirresim)" alt="The image">
+                            <div class="image-onhover-first-bgcolor">
+                            </div>
+                            <div class="image-onhover-second-bgcolor">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-box">
+                        <div class="services-box-content">
+                            <div class="services-box-frontside">
+                                <div class="services-box-frontside-content">
+                                    <div class="services-box-frontside-heading">
+                                        @x.sehirAd
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="services-box-backside">
+                                <div class="services-box-backside-content">
+                                    <div class="services-box-backside-caption">
+                                        @x.sehiraciklama
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="servicesbox-onhover-first-bgcolor">
+                        </div>
+                        <div class="servicesbox-onhover-second-bgcolor">
+                        </div>
+                    </div>
+                    <p><b><a href="@Url.Action("oteldetay","Home")" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b></p>
+                </div>
+            </div>
+        }
+    </section>
+    <section id="Portfolio"></section>
+    <section id="About"></section>
+    <section id="Support"></section>
+</body>
+</html>
+@*<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     @foreach (var x in Model)
                     {
-                        <div class="col-md-3">      
-                            <div class="card areabox" style="width: 18rem;">                              
+                        <div class="col-md-3">
+                            <div class="card areabox" style="width: 18rem;">
                                 <img src="@Url.Content(x.sehirresim)" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <p class="card-text text-center">@x.sehirAd</p>
@@ -64,6 +180,118 @@
                 </div>
             </div>
         </div>
+    </div>*@
+
+@*<div class="container-fluid">  buraya sistemin özellikleri gelecek
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="services-grid-item">
+            <div class="services-section">
+                <div class="picture-section-content">
+                    <img src="http://lorempixel.com/100/100" alt="The image">
+                    <div class="image-onhover-first-bgcolor">
+                    </div>
+                    <div class="image-onhover-second-bgcolor">
+                    </div>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="services-box-content">
+                    <div class="services-box-frontside">
+                        <div class="services-box-frontside-content">
+                            <div class="services-box-frontside-heading">
+                                Service Number 1
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-box-backside">
+                        <div class="services-box-backside-content">
+                            <div class="services-box-backside-caption">
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="servicesbox-onhover-first-bgcolor">
+                </div>
+                <div class="servicesbox-onhover-second-bgcolor">
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="services-grid-item">
+            <div class="services-section">
+                <div class="picture-section-content">
+                    <img src="http://lorempixel.com/100/100" alt="The image">
+                    <div class="image-onhover-first-bgcolor">
+                    </div>
+                    <div class="image-onhover-second-bgcolor">
+                    </div>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="services-box-content">
+                    <div class="services-box-frontside">
+                        <div class="services-box-frontside-content">
+                            <div class="services-box-frontside-heading">
+                                Service Number 2
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-box-backside">
+                        <div class="services-box-backside-content">
+                            <div class="services-box-backside-caption">
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="servicesbox-onhover-first-bgcolor">
+                </div>
+                <div class="servicesbox-onhover-second-bgcolor">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        <div class="services-grid-item">
+            <div class="services-section">
+                <div class="picture-section-content">
+                    <img src="http://lorempixel.com/100/100" alt="The image">
+                    <div class="image-onhover-first-bgcolor">
+                    </div>
+                    <div class="image-onhover-second-bgcolor">
+                    </div>
+                </div>
+            </div>
+            <div class="services-box">
+                <div class="services-box-content">
+                    <div class="services-box-frontside">
+                        <div class="services-box-frontside-content">
+                            <div class="services-box-frontside-heading">
+                                Service Number 3
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-box-backside">
+                        <div class="services-box-backside-content">
+                            <div class="services-box-backside-caption">
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                                Lorem ipsum dolor. Lorem ipsum dolor sit amet.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="servicesbox-onhover-first-bgcolor">
+                </div>
+                <div class="servicesbox-onhover-second-bgcolor">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

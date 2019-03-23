@@ -107,6 +107,7 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\homepage.css" />
     <Content Include="css\hotelhomepage.css" />
     <Content Include="css\loginandregister.css" />
     <Content Include="css\otelprofile.css" />
@@ -300,7 +301,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\otel\otelozellik.cshtml" />
     <Content Include="Views\otel\resim.cshtml" />
-    <Content Include="Views\Home\sehir.cshtml" />
     <Content Include="Views\Home\oteldetay.cshtml" />
     <Content Include="Views\Home\res.cshtml" />
     <None Include="Web.Debug.config">

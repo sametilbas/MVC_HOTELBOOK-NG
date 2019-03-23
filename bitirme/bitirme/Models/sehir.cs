@@ -15,5 +15,6 @@ namespace bitirme.Models
         public string sehirresim { get; set; }
         [NotMapped]
         public HttpPostedFileBase res { get; set; }
+        public string sehiraciklama { get; set; }
     }
 }
