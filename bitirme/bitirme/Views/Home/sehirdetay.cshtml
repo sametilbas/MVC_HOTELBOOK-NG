@@ -1,4 +1,4 @@
-﻿@model IEnumerable<bitirme.Models.oteloda>
+﻿@model IEnumerable<bitirme.Models.otel>
 @{
     Layout = null;
 }
@@ -134,16 +134,14 @@
                             <div class="services-box-frontside">
                                 <div class="services-box-frontside-content">
                                     <div class="services-box-frontside-heading">
-                                        @oteldetay.odaAdi
+                                        @oteldetay.otelAdi
                                     </div>
                                 </div>
                             </div>
                             <div class="services-box-backside">
                                 <div class="services-box-backside-content">
                                     <div class="services-box-backside-caption">
-                                        @oteldetay.odakisi<br />
-                                        @oteldetay.odaucret<br />
-                                        @oteldetay.aciklama
+                                        @oteldetay.otelaciklama
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +151,7 @@
                         <div class="servicesbox-onhover-second-bgcolor">
                         </div>
                     </div>
-                    <p><b><a href="@Url.Action("oteldetay","Home",new { odaid=oteldetay.odaID,otelid=oteldetay.otelID})" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b></p>
+                    <p><b><a href="@Url.Action("oteldetay","Home",new { oad=oteldetay.otelID})" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b></p>
                 </div>
             </div>
         }

@@ -17,9 +17,15 @@ namespace bitirme.Controllers
             var x = db.sehirs.Where(a => a.sehirID > 0).ToList();
             return View(x);
         }
-        public ActionResult oteldetay()
+        public ActionResult sehirdetay(string sad)
         {
-            return View();
+            var sehirdetay = db.otels.Where(x => x.sehir == sad).ToList();            
+            return View(sehirdetay);
+        }
+        public ActionResult oteldetay(int oad)
+        {
+            var oteldetay = db.otelodas.Where(x=>x.otelID==oad).ToList();
+            return View(oteldetay);
         }
         public ActionResult res()
         {

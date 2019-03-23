@@ -303,6 +303,7 @@
     <Content Include="Views\otel\resim.cshtml" />
     <Content Include="Views\Home\oteldetay.cshtml" />
     <Content Include="Views\Home\res.cshtml" />
+    <Content Include="Views\Home\sehirdetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
