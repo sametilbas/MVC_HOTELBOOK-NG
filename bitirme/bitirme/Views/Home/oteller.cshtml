@@ -1,0 +1,165 @@
+﻿@model IEnumerable<bitirme.Models.otel>   
+@{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+        <link href="~/css/homepage.css" rel="stylesheet" />
+        <style>
+            .areabox {
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+
+                .areabox img {
+                    max-width: 100%;
+                }
+
+                .areabox a.demolink {
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: center;
+                    width: max-content;
+                    background: none;
+                    color: #474747;
+                    font-size: 12px;
+                    padding-right: 2em;
+                    padding-left: 2em;
+                    border-color: #ddd;
+                }
+
+                    .areabox a.demolink i {
+                        margin: 0 .4rem;
+                        font-size: 16px;
+                        color: #333;
+                    }
+        </style>
+    </head>
+    <body>
+        <header class="main-header" id="Home">
+            <div class="main-navbar-menu">
+                <div class="rodcontain">
+                    <div class="rod">
+                    </div>
+                </div>
+            </div>
+            <div class="list-container">
+                <div class="container-content">
+                    <div class="content-item">
+                        <div class="item-link">
+                            <div class="string-1">
+                            </div>
+                            <div class="group-1">
+                                <a style="color:rgba(0, 0, 0, 0.65)" href="#Home">Anasayfa</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-left:20px;" class="content-item">
+                        <div class="item-link">
+                            <div class="string-2">
+                            </div>
+                            <div class="group-2">
+                                <a style="color:rgba(0, 0, 0, 0.65)" href="#Services" target="_blank">Hakkımızda</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="item-link">
+                            <div class="string-3">
+                            </div>
+                            <div class="group-1">
+                                <a style="color:rgba(0, 0, 0, 0.65)" href="#Portfolio" target="_blank">Şehirler</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="item-link">
+                            <div class="string-4">
+                            </div>
+                            <div class="group-2">
+                                <a style="color:rgba(0, 0, 0, 0.65)" href="@Url.Action("OtelRegister","otel")" target="_blank">Otel Giriş/Kayıt</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-item">
+                        <div class="item-link">
+                            <div class="string-5">
+                            </div>
+                            <div class="group-1">
+                                <a style="color:rgba(0, 0, 0, 0.65)" href="@Url.Action("userRegister","user")" target="_blank"> Giriş/Kayıt</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="header-heading">
+                    Hadi Tatile
+                </h1>
+            </div>
+        </header>
+        <section id="Services">
+            <div class="Services-container">
+                <div class="Services-heading">
+                    Otel için yardımamı ihtiyacınız var!
+                </div>
+                <div class="Services-afterheading">
+                    Gitmek İstediğiniz Şehri Seçiniz
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="services-grid-item">
+
+                        @*<div class="services-section">
+                            <div class="picture-section-content">
+                                <img src="@Url.Content(item.otelresimAdi)" alt="The image">
+                                <div class="image-onhover-first-bgcolor">
+                                </div>
+                                <div class="image-onhover-second-bgcolor">
+                                </div>
+                            </div>
+                        </div>*@
+
+                        <div class="services-box">
+                            <div class="services-box-content">
+                                <div class="services-box-frontside">
+                                    <div class="services-box-frontside-content">
+                                        <div class="services-box-frontside-heading">
+                                           @item.otelAdi
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="services-box-backside">
+                                    <div class="services-box-backside-content">
+                                        <div class="services-box-backside-caption">
+                                          @item.otelaciklama
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="servicesbox-onhover-first-bgcolor">
+                            </div>
+                            <div class="servicesbox-onhover-second-bgcolor">
+                            </div>
+                        </div>
+                        <p><b><a href="@Url.Action("odalar","Home",new { oad=item.otelID})" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b></p>
+                    </div>
+                </div>
+            }
+        </section>
+        <section id="Portfolio"></section>
+        <section id="About"></section>
+        <section id="Support"></section>
+    </body>
+</html>

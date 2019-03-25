@@ -1,6 +1,7 @@
 ﻿using bitirme.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -17,14 +18,14 @@ namespace bitirme.Controllers
             var x = db.sehirs.Where(a => a.sehirID > 0).ToList();
             return View(x);
         }
-        public ActionResult sehirdetay(string sad)
+        public ActionResult oteller(string sad)
         {
-            var sehirdetay = db.otels.Where(x => x.sehir == sad).ToList();            
-            return View(sehirdetay);
+            var oteller = db.otels.Where(x=>x.sehir==sad).ToList();
+            return View(oteller);
         }
-        public ActionResult oteldetay(int oad)
+        public ActionResult odalar(int oad)
         {
-            var oteldetay = db.otelodas.Where(x=>x.otelID==oad).ToList();
+            var oteldetay = db.otelodas.Where(x => x.otelID == oad).ToList();
             return View(oteldetay);
         }
         public ActionResult res()
@@ -40,12 +41,12 @@ namespace bitirme.Controllers
             s.sehirresim = "~/images/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/images/"), fileName);
             s.res.SaveAs(fileName);
-            using (OurDbContext db=new OurDbContext())
+            using (OurDbContext db = new OurDbContext())
             {
                 db.sehirs.Add(s);
                 db.SaveChanges();
             }
             return View();
-        }    
+        }
     }
-}   
+}

@@ -266,6 +266,7 @@
     <Compile Include="Models\otel.cs" />
     <Compile Include="Models\oteloda.cs" />
     <Compile Include="Models\otelresim.cs" />
+    <Compile Include="Models\otelresimviewmodel.cs" />
     <Compile Include="Models\OurDbContext.cs" />
     <Compile Include="Models\ozellik.cs" />
     <Compile Include="Models\sehir.cs" />
@@ -301,9 +302,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\otel\otelozellik.cshtml" />
     <Content Include="Views\otel\resim.cshtml" />
-    <Content Include="Views\Home\oteldetay.cshtml" />
+    <Content Include="Views\Home\odalar.cshtml" />
     <Content Include="Views\Home\res.cshtml" />
-    <Content Include="Views\Home\sehirdetay.cshtml" />
+    <Content Include="Views\Home\oteller.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
