@@ -301,7 +301,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\otel\otelozellik.cshtml" />
-    <Content Include="Views\otel\resim.cshtml" />
     <Content Include="Views\Home\odalar.cshtml" />
     <Content Include="Views\Home\res.cshtml" />
     <Content Include="Views\Home\oteller.cshtml" />
@@ -315,6 +314,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
+    <Folder Include="OtelImage\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

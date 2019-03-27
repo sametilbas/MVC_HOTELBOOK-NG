@@ -17,7 +17,7 @@ namespace bitirme.Controllers
         OurDbContext db = new OurDbContext();
         // GET: otel
         public ActionResult Index()
-        {        
+        {
             return View(db.otelodas.ToList());
         }
         public ActionResult OtelRegister()
@@ -28,13 +28,13 @@ namespace bitirme.Controllers
         [HttpPost]
         public ActionResult OtelRegister(bitirme.Models.otel otel)
         {
-            using (OurDbContext db=new OurDbContext())
+            using (OurDbContext db = new OurDbContext())
             {
                 if (ModelState.IsValid)
-                {                   
-                        db.otels.Add(otel);
-                        db.SaveChanges();
-                        return RedirectToAction("OtelRegister");
+                {
+                    db.otels.Add(otel);
+                    db.SaveChanges();
+                    return RedirectToAction("OtelRegister");
                 }
             }
             return View(otel);
@@ -65,24 +65,26 @@ namespace bitirme.Controllers
         }
         public ActionResult otelupdate(int? otelid)
         {
+
             return View(db.otels.Find(otelid));
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult otelupdate(otel otel)
+        public ActionResult otelupdate(bitirme.Models.otel s)
         {
-            var k = db.otels.Find(otel.otelID);
-
-            k.otelAdi = otel.otelAdi;
-            k.otelkullaniciAdi = otel.otelkullaniciAdi;
-            k.otelSifre = otel.otelSifre;
-            k.otelEmail = otel.otelEmail;
-            k.otelTel = otel.otelTel;
-            k.adres = otel.adres;
-            k.otelaciklama = otel.otelaciklama;
+            var k = db.otels.Find(s.otelID);
+            k.otelID = s.otelID;
+            k.otelAdi = s.otelAdi;
+            k.otelkullaniciAdi = s.otelkullaniciAdi;
+            k.adres = s.adres;
+            k.otelEmail = s.otelEmail;
+            k.otelSifre = s.otelSifre;
+            k.otelTel = s.otelTel;
+            k.otelaciklama = s.otelaciklama;
             db.SaveChanges();
 
-            return View("Index", db.otels);
+
+            return View("otelupdate");
         }
         public ActionResult otelodaEkle()
         {
@@ -139,7 +141,7 @@ namespace bitirme.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult resim(IEnumerable<HttpPostedFileBase> ResimDosya ,int? otelid,bitirme.Models.otelresim or)//Bu resimde otelid çekilmiyo onu düzelt
+        public ActionResult resim(IEnumerable<HttpPostedFileBase> ResimDosya, int? otelid, bitirme.Models.otelresim or)//Bu resimde otelid çekilmiyo onu düzelt
         {
             if (ResimDosya != null)
             {
