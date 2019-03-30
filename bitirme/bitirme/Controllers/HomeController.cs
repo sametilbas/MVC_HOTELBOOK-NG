@@ -38,8 +38,8 @@ namespace bitirme.Controllers
             string fileName = Path.GetFileNameWithoutExtension(s.res.FileName);
             string extension = Path.GetExtension(s.res.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            s.sehirresim = "~/images/" + fileName;
-            fileName = Path.Combine(Server.MapPath("~/images/"), fileName);
+            s.sehirresim = "~/Resimler/images/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Resimler/images/"), fileName);
             s.res.SaveAs(fileName);
             using (OurDbContext db = new OurDbContext())
             {

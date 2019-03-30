@@ -20,25 +20,7 @@ namespace bitirme.Controllers
         {
             return View(db.otelodas.ToList());
         }
-        public ActionResult OtelRegister()
-        {
-            Session.Abandon();
-            return View();
-        }
-        [HttpPost]
-        public ActionResult OtelRegister(bitirme.Models.otel otel)
-        {
-            using (OurDbContext db = new OurDbContext())
-            {
-                if (ModelState.IsValid)
-                {
-                    db.otels.Add(otel);
-                    db.SaveChanges();
-                    return RedirectToAction("OtelRegister");
-                }
-            }
-            return View(otel);
-        }
+
         public ActionResult HotelLogin()
         {
             return View();
@@ -65,7 +47,6 @@ namespace bitirme.Controllers
         }
         public ActionResult otelupdate(int? otelid)
         {
-
             return View(db.otels.Find(otelid));
         }
         [ValidateAntiForgeryToken]
@@ -92,13 +73,24 @@ namespace bitirme.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult otelodaEkle(bitirme.Models.oteloda oteloda, int? otelid)
+        public ActionResult otelodaEkle(bitirme.Models.oteloda s, int? otelid)
         {
-            if (ModelState.IsValid)
+            //string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
+            //string ex = Path.GetExtension(s.resim.FileName);
+            //file = file + DateTime.Now.ToString("yymmssfff") + ex;
+            //s.odaresim = "~/Resimler/OdaResims" + file;
+            //file = Path.Combine(Server.MapPath("~/Resimler/OdaResims"), file);
+            //s.resim.SaveAs(file);
+
+            using (OurDbContext db = new OurDbContext())
             {
-                oteloda.otelID = otelid;
-                db.otelodas.Add(oteloda);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {                  
+                   
+                    db.otelodas.Add(s);
+                    db.SaveChanges();
+                    return RedirectToAction("resim");
+                }
             }
             return RedirectToAction("otelodaEkle");
         }
@@ -141,20 +133,52 @@ namespace bitirme.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult resim(IEnumerable<HttpPostedFileBase> ResimDosya, int? otelid, bitirme.Models.otelresim or)//Bu resimde otelid çekilmiyo onu düzelt
+        public ActionResult resim( int? otelid, bitirme.Models.otelresim s)//Bu resimde otelid çekilmiyo onu düzelt
         {
-            if (ResimDosya != null)
+            string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
+            string ex = Path.GetExtension(s.resim.FileName);
+            file = file + DateTime.Now.ToString("yymmssfff") + ex;
+            s.otelresimAdi = "~/Resimler/OtelResims" + file;
+            file = Path.Combine(Server.MapPath("~/Resimler/OtelResims"), file);
+            s.resim.SaveAs(file);
+            using (OurDbContext db = new OurDbContext())
             {
-                foreach (var item in ResimDosya)//kaç adet resim seçildiyse, o kadar kez çalışacak
+                if (ModelState.IsValid)
                 {
-                    item.SaveAs(Server.MapPath("~/Resim/{item.FileName}"));//resim klasörüne resimleri kaydetme
-                    or.otelresimAdi = item.FileName;
-                    db.otelresims.Add(or);
+                    s.otelID = otelid;
+                    db.otelresims.Add(s);
+                    db.SaveChanges();
+                    return RedirectToAction("resim");
                 }
-                db.SaveChanges();//veri tabanına kayıt işlemi
-
             }
-            return RedirectToAction("otelupdate");
+            return View(s);
+
         }
+
+        public ActionResult or()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult or(bitirme.Models.otel s)
+        {
+            string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
+            string ex = Path.GetExtension(s.resim.FileName);
+            file = file + DateTime.Now.ToString("yymmssfff") + ex;
+            s.or = "~/Resimler/OtelImage" + file;
+            file = Path.Combine(Server.MapPath("~/Resimler/OtelImage"), file);
+            s.resim.SaveAs(file);
+            using (OurDbContext db = new OurDbContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    db.otels.Add(s);
+                    db.SaveChanges();
+                    return RedirectToAction("HotelLogin");
+                }
+            }
+            return View(s);
+        }
+
     }
 }

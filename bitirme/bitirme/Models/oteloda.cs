@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -16,5 +17,7 @@ namespace bitirme.Models
         public int odakisi { get; set; }
         public int odaucret { get; set; }
         public string aciklama { get; set; }
+        public string odaresim { get; set; }
+        
     }
 }
