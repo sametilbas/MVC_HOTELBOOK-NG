@@ -136,14 +136,15 @@
                                 <div class="services-box-frontside">
                                     <div class="services-box-frontside-content">
                                         <div class="services-box-frontside-heading">
-                                            <p style="margin-left:300px;margin-top:30px"><b>@item.otelAdi</b></p>  <img src="@Url.Content(item.or)" style="width:510px;height:240px;;margin-right:60px" alt="The image">
+                                            @*<p style="margin-left:300px;margin-top:30px"><b>@item.otelAdi</b></p>*@
+                                            <img src="@Url.Content(item.or)" style="width:510px;height:240px;;margin-right:60px" alt="The image">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="services-box-backside">
                                     <div class="services-box-backside-content">
                                         <div class="services-box-backside-caption">
-                                          @item.otelaciklama
+                                            @item.otelaciklama
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +154,9 @@
                             <div class="servicesbox-onhover-second-bgcolor">
                             </div>
                         </div>
-                        <p><b><a href="@Url.Action("odalar","Home",new { oad=item.otelID})" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b></p>
+                        <p><b><a href="@Url.Action("odalar","Home",new { oad=item.otelID})" class="btn btn-success demolink"><i class="fa fa-search"></i>ODALARA GİT</a></b></p>  
+                        <a href="@Url.Action("oteldetay","Home",new { otelid=item.otelID})" style="margin-left:338px;margin-top:225px" class="btn btn-success demolink"><i class="fa fa-search"></i>OTELE GİT</a>
+
                     </div>
                 </div>
             }

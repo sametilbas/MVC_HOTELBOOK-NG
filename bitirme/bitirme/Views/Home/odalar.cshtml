@@ -121,14 +121,14 @@
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="services-grid-item">
                     <div class="services-section">
-                            <div class="picture-section-content">
-                                <img src="@Url.Content(oteldetay.odaresim)" alt="The image">
-                                <div class="image-onhover-first-bgcolor">
-                                </div>
-                                <div class="image-onhover-second-bgcolor">
-                                </div>
+                        <div class="picture-section-content">
+                            <img src="@Url.Content(oteldetay.odaresim)" alt="The image">
+                            <div class="image-onhover-first-bgcolor">
+                            </div>
+                            <div class="image-onhover-second-bgcolor">
                             </div>
                         </div>
+                    </div>
                     <div class="services-box">
                         <div class="services-box-content">
                             <div class="services-box-frontside">
@@ -154,6 +154,7 @@
                         </div>
                     </div>
                     <p><b><a href="@Url.Action("oteldetay","Home",new { odaid=oteldetay.odaID,otelid=oteldetay.otelID})" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b></p>
+                    <a href="@Url.Action("rezerve","Home",new { otelid=oteldetay.otelID})" style="margin-left:310px;margin-top:225px" class="btn btn-success demolink"><i class="fa fa-search"></i>REZERVASYON</a>
                 </div>
             </div>
         }

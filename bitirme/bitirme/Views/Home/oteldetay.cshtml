@@ -1,0 +1,138 @@
+﻿@model bitirme.Models.oteldetayview
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>oteldetay</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <table class="table table-fixed">
+                <thead>
+                    <tr>
+                        <th class="col-xs-3">
+                            <label>odaadi</label>
+                        </th>
+                        <th class="col-xs-3">
+                            <label>odakisi</label>
+                        </th>
+
+                        <th class="col-xs-3">
+                            <label>ücret</label>
+                        </th>
+                        <th class="col-xs-3">
+                            <label>odaaciklama</label>
+                        </th>
+                        <th class="col-xs-3">
+                            <label>resim</label>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.oteloda)
+                    {
+                        <tr>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.odaAdi)
+                            </td>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.odakisi)
+                            </td>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.odaucret)
+                            </td>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.aciklama)
+                            </td>
+                            <td class="col-xs-3">
+                                <img src="@Url.Content(item.odaresim)" width="75" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <table class="table table-fixed">
+                <thead>
+                    <tr>
+                        <th class="col-xs-3">
+                            <label>odaadi</label>
+                        </th>
+                        <th class="col-xs-3">
+                            <label>odakisi</label>
+                        </th>
+
+                        <th class="col-xs-3">
+                            <label>ücret</label>
+                        </th>
+                        <th class="col-xs-3">
+                            <label>odaaciklama</label>
+                        </th>
+                        <th class="col-xs-3">
+                            <label>resim</label>
+                        </th>
+                        <th class="col-xs-3">İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.otel)
+                    {
+                        <tr>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.otelAdi)
+                            </td>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.otelEmail)
+                            </td>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.otelaciklama)
+                            </td>
+                            <td class="col-xs-3">
+                                @Html.DisplayFor(modelItem => item.otelTel)
+                            </td>
+                            <td class="col-xs-3">
+                                <img src="@Url.Content(item.or)" width="75" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <table class="table table-fixed">
+                <thead>
+                    <tr>                       
+                        <th class="col-xs-3">
+                            <label>resim</label>
+                        </th>                       
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.otelresim)
+                    {
+                        <tr>                           
+                            <td class="col-xs-3">
+                                <img src="@Url.Content(item.otelresimAdi)" width="75" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>

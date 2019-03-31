@@ -155,3 +155,4 @@ C:\Users\SAMETİLBAŞ\Desktop\GitHub\MVC_HOTELBOOK-NG\bitirme\bitirme\obj\Debug\
 C:\Users\SAMETİLBAŞ\Desktop\GitHub\MVC_HOTELBOOK-NG\bitirme\bitirme\obj\Debug\bitirme.csproj.CopyComplete
 C:\Users\SAMETİLBAŞ\Desktop\GitHub\MVC_HOTELBOOK-NG\bitirme\bitirme\obj\Debug\bitirme.dll
 C:\Users\SAMETİLBAŞ\Desktop\GitHub\MVC_HOTELBOOK-NG\bitirme\bitirme\obj\Debug\bitirme.pdb
+C:\Users\SAMETİLBAŞ\Desktop\GitHub\MVC_HOTELBOOK-NG\bitirme\bitirme\obj\Debug\bitirme.csprojAssemblyReference.cache

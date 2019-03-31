@@ -2004,13 +2004,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
-    <Compile Include="Controllers\otelController.cs" />
     <Compile Include="Controllers\userController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\kategori.cs" />
     <Compile Include="Models\otel.cs" />
+    <Compile Include="Models\oteldetayview.cs" />
     <Compile Include="Models\oteloda.cs" />
     <Compile Include="Models\otelresim.cs" />
     <Compile Include="Models\OurDbContext.cs" />
@@ -2055,6 +2055,9 @@
     <Content Include="Views\Hotel\otelodaSil.cshtml" />
     <Content Include="Views\Hotel\otelozellik.cshtml" />
     <Content Include="Views\Hotel\otelresimEkle.cshtml" />
+    <Content Include="Views\Home\oteldetay.cshtml" />
+    <Content Include="Views\Home\rezerve.cshtml" />
+    <Content Include="Views\Home\odadetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

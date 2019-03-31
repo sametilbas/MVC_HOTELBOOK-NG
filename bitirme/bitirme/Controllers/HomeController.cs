@@ -48,5 +48,21 @@ namespace bitirme.Controllers
             }
             return View();
         }
+        public ActionResult oteldetay(int? otelid)
+        {
+            oteldetayview ov = new oteldetayview();
+            ov.otel = db.otels.Where(x => x.otelID == otelid).ToList();
+            ov.otelresim = db.otelresims.Where(x => x.otelID == otelid).ToList();
+            ov.oteloda = db.otelodas.Where(x => x.otelID == otelid).ToList();
+            return View(ov);
+        }
+        public ActionResult odadetay()
+        {
+            return View();
+        }
+        public ActionResult rezerve()
+        {
+            return View();
+        }
     }
 }
