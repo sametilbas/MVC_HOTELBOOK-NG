@@ -2022,10 +2022,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\otel\Index.cshtml" />
-    <Content Include="Views\otel\otelupdate.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\otel\otelodaEkle.cshtml" />
     <Content Include="Views\user\userRegister.cshtml" />
     <Content Include="Views\user\Index.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -2043,18 +2040,21 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\otel\otelozellik.cshtml" />
     <Content Include="Views\Home\odalar.cshtml" />
     <Content Include="Views\Home\res.cshtml" />
     <Content Include="Views\Home\oteller.cshtml" />
-    <Content Include="Views\otel\HotelLogin.cshtml" />
-    <Content Include="Views\otel\or.cshtml" />
-    <Content Include="Views\otel\resim.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\Hotel\or.cshtml" />
     <Content Include="Views\Hotel\HotelLogin.cshtml" />
     <Content Include="Views\Hotel\otelupdate.cshtml" />
+    <Content Include="Views\Hotel\oteldelete.cshtml" />
+    <Content Include="Views\Hotel\otelodaEkle.cshtml" />
+    <Content Include="Views\Hotel\otelodaliste.cshtml" />
+    <Content Include="Views\Hotel\otelodaDuzenle.cshtml" />
+    <Content Include="Views\Hotel\otelodaSil.cshtml" />
+    <Content Include="Views\Hotel\otelozellik.cshtml" />
+    <Content Include="Views\Hotel\otelresimEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

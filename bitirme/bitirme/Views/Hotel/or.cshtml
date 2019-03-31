@@ -13,7 +13,7 @@
  
 </head>
 <body>
-   
+
     @using (Html.BeginForm("or", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
@@ -89,7 +89,7 @@
             <div class="form-group">
                 @Html.Label("Otel Resminiz:", htmlAttributes: new { @class = "control-label " })
                 <div class="col-md-10">
-                    <input type="file" name="resim" required />
+                    <input type="file" name="foto" , id="foto" , accept=".jpeg,.JPEG,.jpg,.png,.gif" class="form-control" />
                     @Html.ValidationMessageFor(model => model.or, "", new { @class = "text-danger" })
                 </div>
             </div>

@@ -1,7 +1,7 @@
-﻿@model bitirme.Models.otel
+﻿@model bitirme.Models.oteloda
 
 @{
-    ViewBag.Title = "otelupdate";
+    ViewBag.Title = "otelodaEkle";
 }
 
 <!DOCTYPE html>
@@ -190,92 +190,68 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    @using (Html.BeginForm("otelupdate", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    <h2>otelodaEkle</h2>
+
+                    @using (Html.BeginForm("otelodaEkle", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.otelID)
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.otelAdi, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelAdi, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.otelID, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.otelID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.odaAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.odaAdi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.odaAdi, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.otelkullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.odakisi, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelkullaniciAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelkullaniciAdi, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.odakisi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.odakisi, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.otelSifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.odaucret, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelSifre, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelSifre, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.odaucret, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.odaucret, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.otelEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelEmail, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelEmail, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelTel, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelTel, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelTel, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.sehir, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sehir, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sehir, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.adres, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.adres, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.adres, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelaciklama, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelaciklama, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelaciklama, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.aciklama, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.aciklama, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.Label("Yeni Resminiz:", htmlAttributes: new { @class = "control-label " })
+                                @Html.Label("Oda Resminiz:", htmlAttributes: new { @class = "control-label " })
                                 <div class="col-md-10">
                                     <input type="file" name="foto" , id="foto" , accept=".jpeg,.JPEG,.jpg,.png,.gif" class="form-control" />
-                                    @Html.ValidationMessageFor(model => model.or, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.odaresim, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
+                                    <input type="submit" value="Create" class="btn btn-default" />
                                 </div>
                             </div>
                         </div>
                     }
+
                     <!-- Footer -->
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">

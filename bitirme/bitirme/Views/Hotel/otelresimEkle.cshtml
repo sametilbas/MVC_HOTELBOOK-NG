@@ -1,9 +1,8 @@
-﻿@model bitirme.Models.otel
+﻿@model bitirme.Models.otelresim
 
 @{
-    ViewBag.Title = "otelupdate";
+    ViewBag.Title = "otelresimEkle";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,8 +54,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Odalar:</h6>
-                        <a class="collapse-item" href="@Url.Action("otelodaliste","Hotel",new {otelid=Session["otelID"] })">Oda Liste</a>
-                        <a class="collapse-item" href="@Url.Action("otelodaEkle","Hotel",new {otelid=Session["otelID"] })">Oda Ekle</a>
+                        <a class="collapse-item" href="buttons.html">Oda Ekle</a>
+                        <a class="collapse-item" href="cards.html">Oda Düzenle</a>
+                        <a class="collapse-item" href="cards.html">Oda Sil</a>
                     </div>
                 </div>
             </li>
@@ -91,8 +91,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Profil</h6>
-                        <a class="collapse-item" href="@Url.Action("otelupdate","Hotel",new {otelid=Session["otelID"] })">Düzenle</a>
-                        <a class="collapse-item" href="@Url.Action("oteldelete","Hotel",new {otelid=Session["otelID"] })">Hesabı Sil</a>
+                        <a class="collapse-item" href="login.html">Düzenle</a>
+                        <a class="collapse-item" href="register.html">Sil</a>
                     </div>
                 </div>
             </li>
@@ -169,7 +169,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="@Url.Action("otelupdate","Hotel",new {otelid=Session["otelID"] })">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -190,138 +190,97 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    @using (Html.BeginForm("otelupdate", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    <h2>otelresimEkle</h2>
+
+                    @using (Html.BeginForm("otelresimEkle", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.otelID)
+                    <div class="form-horizontal">
+                        <h4>otelresim</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelAdi, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelkullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelkullaniciAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelkullaniciAdi, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelSifre, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelSifre, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelSifre, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelEmail, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelEmail, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelTel, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelTel, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelTel, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.sehir, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sehir, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sehir, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.adres, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.adres, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.adres, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelaciklama, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelaciklama, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelaciklama, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.Label("Yeni Resminiz:", htmlAttributes: new { @class = "control-label " })
-                                <div class="col-md-10">
-                                    <input type="file" name="foto" , id="foto" , accept=".jpeg,.JPEG,.jpg,.png,.gif" class="form-control" />
-                                    @Html.ValidationMessageFor(model => model.or, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
-                                </div>
+                        <div class="form-group">
+                            @Html.Label("Otel Resminiz:", htmlAttributes: new { @class = "control-label " })
+                            <div class="col-md-10">
+                                <input type="file" name="foto" , id="foto" , accept=".jpeg,.JPEG,.jpg,.png,.gif" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.otelresimAdi, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    }
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2019</span>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.otelID, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.otelID, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
-                </div>
-                <!-- End of Content Wrapper -->
-            </div>
-            <!-- End of Page Wrapper -->
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Çıkmaya Hazırmısın</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">Çıkmayı İstiyorsan Aşağıdaki Butona Bas</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">İptal</button>
-                            <a class="btn btn-primary" href="login.html">Çıkış</a>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
                         </div>
                     </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2019</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Çıkmaya Hazırmısın</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Çıkmayı İstiyorsan Aşağıdaki Butona Bas</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">İptal</button>
+                    <a class="btn btn-primary" href="login.html">Çıkış</a>
                 </div>
             </div>
-            <!-- Bootstrap core JavaScript-->
-            <script src="~/Content/admin/vendor/jquery/jquery.min.js"></script>
-            <script src="~/Content/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-            <!-- Core plugin JavaScript-->
-            <script src="~/Content/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-            <!-- Custom scripts for all pages-->
-            <script src="~/Content/admin/js/sb-admin-2.min.js"></script>
-            <!-- Page level plugins -->
-            <script src="~/Content/admin/vendor/chart.js/Chart.min.js"></script>
-            <!-- Page level custom scripts -->
-            <script src="~/Content/admin/js/demo/chart-area-demo.js"></script>
-            <script src="~/Content/admin/js/demo/chart-pie-demo.js"></script>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/admin/js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="~/Content/admin/vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Content/admin/js/demo/chart-area-demo.js"></script>
+    <script src="~/Content/admin/js/demo/chart-pie-demo.js"></script>
 </body>
 </html>
+
+

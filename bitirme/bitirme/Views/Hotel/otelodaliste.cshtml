@@ -1,8 +1,9 @@
-﻿@model bitirme.Models.otel
+﻿@model IEnumerable<bitirme.Models.oteloda>
 
 @{
-    ViewBag.Title = "otelupdate";
+    ViewBag.Title = "otelodaliste";
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -189,93 +190,65 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <h2>otelodaliste</h2>
 
-                    @using (Html.BeginForm("otelupdate", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                    <p>
+                        <a class="collapse-item" href="@Url.Action("otelodaEkle","Hotel",new {otelid=Session["otelID"]})">Oda Ekle</a>
+                    </p>
+                    <section>
+                        <div class="container">
+                            <table class="table table-fixed">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-3">
+                                            @Html.DisplayNameFor(model => model.odaAdi)
+                                        </th>
+                                        <th class="col-xs-3">
+                                            @Html.DisplayNameFor(model => model.odakisi)
+                                        </th>
 
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.otelID)
+                                        <th class="col-xs-3">
+                                            @Html.DisplayNameFor(model => model.odaucret)
+                                        </th>
+                                        <th class="col-xs-3">
+                                            @Html.DisplayNameFor(model => model.aciklama)
+                                        </th>
+                                        <th class="col-xs-3">
+                                            @Html.DisplayNameFor(model => model.odaresim)
+                                        </th>
+                                        <th class="col-xs-3">İşlemler</th>
+                                    </tr>
+                                </thead>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelAdi, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelkullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelkullaniciAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelkullaniciAdi, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelSifre, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelSifre, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelSifre, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelEmail, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelEmail, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelTel, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelTel, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelTel, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.sehir, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sehir, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sehir, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.adres, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.adres, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.adres, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelaciklama, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelaciklama, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelaciklama, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.Label("Yeni Resminiz:", htmlAttributes: new { @class = "control-label " })
-                                <div class="col-md-10">
-                                    <input type="file" name="foto" , id="foto" , accept=".jpeg,.JPEG,.jpg,.png,.gif" class="form-control" />
-                                    @Html.ValidationMessageFor(model => model.or, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
-                                </div>
-                            </div>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="col-xs-3">
+                                                @Html.DisplayFor(modelItem => item.odaAdi)
+                                            </td>
+                                            <td class="col-xs-3">
+                                                @Html.DisplayFor(modelItem => item.odakisi)
+                                            </td>
+                                            <td class="col-xs-3">
+                                                @Html.DisplayFor(modelItem => item.odaucret)
+                                            </td>
+                                            <td class="col-xs-3">
+                                                @Html.DisplayFor(modelItem => item.aciklama)
+                                            </td>
+                                            <td class="col-xs-3">
+                                                <img src="@Url.Content(item.odaresim)" width="75" />
+                                            </td>
+                                            <td class="col-xs-3">
+                                                @Html.ActionLink("Düzenle", "otelodaDuzenle", new { odaid = item.odaID })
+                                                @Html.ActionLink("Sil", "otelodaSil", new { odaid = item.odaID })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
-                    }
+                    </section>
                     <!-- Footer -->
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">

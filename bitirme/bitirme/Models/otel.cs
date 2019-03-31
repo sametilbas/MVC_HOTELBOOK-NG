@@ -30,9 +30,7 @@ namespace bitirme.Models
         public string sehir { get; set; }
         public string adres { get; set; }
         public string otelaciklama { get; set; }
-
         public string or { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase resim { get; set; }
+
     }
 }

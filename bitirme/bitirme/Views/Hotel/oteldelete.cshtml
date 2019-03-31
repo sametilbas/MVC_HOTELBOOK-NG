@@ -1,7 +1,7 @@
 ﻿@model bitirme.Models.otel
 
 @{
-    ViewBag.Title = "otelupdate";
+    ViewBag.Title = "oteldelete";
 }
 
 <!DOCTYPE html>
@@ -189,93 +189,92 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.otelAdi)
+                            </dt>
 
-                    @using (Html.BeginForm("otelupdate", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                            <dd>
+                                @Html.DisplayFor(model => model.otelAdi)
+                            </dd>
 
-                        <div class="form-horizontal">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.otelID)
+                            <dt>
+                                @Html.DisplayNameFor(model => model.otelkullaniciAdi)
+                            </dt>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelAdi, "", new { @class = "text-danger" })
-                                </div>
+                            <dd>
+                                @Html.DisplayFor(model => model.otelkullaniciAdi)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.otelSifre)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.otelSifre)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.otelEmail)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.otelEmail)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.otelTel)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.otelTel)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.sehir)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.sehir)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.adres)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.adres)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.otelaciklama)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.otelaciklama)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.or)
+                            </dt>
+
+                            <dd>
+                                <img src="@Url.Content(Model.or)" width="150" />
+                            </dd>
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-default" /> 
                             </div>
+                        }
+                    </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelkullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelkullaniciAdi, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelkullaniciAdi, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelSifre, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelSifre, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelSifre, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelEmail, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelEmail, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelTel, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelTel, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelTel, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.sehir, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sehir, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sehir, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.adres, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.adres, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.adres, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.otelaciklama, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.otelaciklama, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.otelaciklama, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.Label("Yeni Resminiz:", htmlAttributes: new { @class = "control-label " })
-                                <div class="col-md-10">
-                                    <input type="file" name="foto" , id="foto" , accept=".jpeg,.JPEG,.jpg,.png,.gif" class="form-control" />
-                                    @Html.ValidationMessageFor(model => model.or, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
-                                </div>
-                            </div>
-                        </div>
-                    }
                     <!-- Footer -->
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">

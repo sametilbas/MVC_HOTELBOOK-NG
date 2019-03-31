@@ -133,52 +133,52 @@ namespace bitirme.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult resim( int? otelid, bitirme.Models.otelresim s)//Bu resimde otelid çekilmiyo onu düzelt
-        {
-            string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
-            string ex = Path.GetExtension(s.resim.FileName);
-            file = file + DateTime.Now.ToString("yymmssfff") + ex;
-            s.otelresimAdi = "~/Resimler/OtelResims" + file;
-            file = Path.Combine(Server.MapPath("~/Resimler/OtelResims"), file);
-            s.resim.SaveAs(file);
-            using (OurDbContext db = new OurDbContext())
-            {
-                if (ModelState.IsValid)
-                {
-                    s.otelID = otelid;
-                    db.otelresims.Add(s);
-                    db.SaveChanges();
-                    return RedirectToAction("resim");
-                }
-            }
-            return View(s);
+        //public ActionResult resim( int? otelid, bitirme.Models.otelresim s)//Bu resimde otelid çekilmiyo onu düzelt
+        //{
+        //    string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
+        //    string ex = Path.GetExtension(s.resim.FileName);
+        //    file = file + DateTime.Now.ToString("yymmssfff") + ex;
+        //    s.otelresimAdi = "~/Resimler/OtelResims" + file;
+        //    file = Path.Combine(Server.MapPath("~/Resimler/OtelResims"), file);
+        //    s.resim.SaveAs(file);
+        //    using (OurDbContext db = new OurDbContext())
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            s.otelID = otelid;
+        //            db.otelresims.Add(s);
+        //            db.SaveChanges();
+        //            return RedirectToAction("resim");
+        //        }
+        //    }
+        //    return View(s);
 
-        }
+        //}
 
         public ActionResult or()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult or(bitirme.Models.otel s)
-        {
-            string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
-            string ex = Path.GetExtension(s.resim.FileName);
-            file = file + DateTime.Now.ToString("yymmssfff") + ex;
-            s.or = "~/Resimler/OtelImage" + file;
-            file = Path.Combine(Server.MapPath("~/Resimler/OtelImage"), file);
-            s.resim.SaveAs(file);
-            using (OurDbContext db = new OurDbContext())
-            {
-                if (ModelState.IsValid)
-                {
-                    db.otels.Add(s);
-                    db.SaveChanges();
-                    return RedirectToAction("HotelLogin");
-                }
-            }
-            return View(s);
-        }
+        //[HttpPost]
+        //public ActionResult or(bitirme.Models.otel s)
+        //{
+        //    string file = Path.GetFileNameWithoutExtension(s.resim.FileName);
+        //    string ex = Path.GetExtension(s.resim.FileName);
+        //    file = file + DateTime.Now.ToString("yymmssfff") + ex;
+        //    s.or = "~/Resimler/OtelImage" + file;
+        //    file = Path.Combine(Server.MapPath("~/Resimler/OtelImage"), file);
+        //    s.resim.SaveAs(file);
+        //    using (OurDbContext db = new OurDbContext())
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            db.otels.Add(s);
+        //            db.SaveChanges();
+        //            return RedirectToAction("HotelLogin");
+        //        }
+        //    }
+        //    return View(s);
+        //}
 
     }
 }
