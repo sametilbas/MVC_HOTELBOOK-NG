@@ -1,0 +1,646 @@
+﻿@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    background: #f1f1f1;
+    font-family: Open Sans;
+    height: 100%;
+    overflow: auto;
+    margin: 0;
+    font-size: 14px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#container {
+    position: relative;
+    display: flex;
+    margin: auto;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+    #container .mockup {
+        position: relative;
+        background: #fff;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+        #container .mockup .top {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 55px;
+            background: #fff;
+            box-shadow: 0 15px 30px -20px rgba(0, 0, 0, 0.1);
+            align-items: center;
+        }
+
+            #container .mockup .top .logo {
+                position: relative;
+                height: 20px;
+                margin-left: 20px;
+            }
+
+            #container .mockup .top ul {
+                display: block;
+                margin-left: 20px;
+                padding: 0;
+                list-style: none;
+            }
+
+                #container .mockup .top ul li {
+                    display: inline-block;
+                    line-height: 35px;
+                    cursor: pointer;
+                    padding: 0 10px;
+                    font-weight: 600;
+                    color: #777;
+                    text-transform: uppercase;
+                }
+
+                    #container .mockup .top ul li:hover {
+                        color: #333;
+                        background: rgba(0, 0, 0, 0.05);
+                        border-radius: 10px;
+                    }
+
+                #container .mockup .top ul .store {
+                    color: #ff5572;
+                }
+
+                #container .mockup .top ul .more i {
+                    font-size: 24px;
+                    vertical-align: middle;
+                    color: #777;
+                }
+
+            #container .mockup .top .user_control {
+                flex: 1;
+                height: 55px;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                margin-right: 20px;
+            }
+
+                #container .mockup .top .user_control #profile_img {
+                    border-radius: 50%;
+                    width: 36px;
+                    height: 36px;
+                    cursor: pointer;
+                }
+
+                    #container .mockup .top .user_control #profile_img:hover {
+                        box-shadow: inset 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+                    }
+
+                #container .mockup .top .user_control #notifications {
+                    width: 35px;
+                    height: 35px;
+                    margin-right: 20px;
+                    border-radius: 50%;
+                    box-shadow: 0 3px 20px -4px rgba(0, 0, 0, 0.08);
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    line-height: 35px;
+                }
+
+                    #container .mockup .top .user_control #notifications:hover {
+                        box-shadow: 0 3px 15px -4px rgba(0, 0, 0, 0.33);
+                        transition: all 0.3s ease;
+                    }
+
+                    #container .mockup .top .user_control #notifications:active {
+                        box-shadow: inset 0 2px 15px -4px rgba(0, 0, 0, 0.2);
+                    }
+
+                    #container .mockup .top .user_control #notifications i {
+                        line-height: 35px;
+                        font-size: 16px;
+                        color: #777;
+                    }
+
+                #container .mockup .top .user_control #new {
+                    width: 70px;
+                    height: 35px;
+                    margin-right: 20px;
+                    border-radius: 50px;
+                    box-shadow: 0 3px 20px -4px rgba(0, 0, 0, 0.08);
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    line-height: 35px;
+                    text-transform: uppercase;
+                    color: #4d69e6;
+                    font-weight: 600;
+                }
+
+                    #container .mockup .top .user_control #new:hover {
+                        box-shadow: 0 3px 15px -4px rgba(0, 0, 0, 0.33);
+                        transition: all 0.3s ease;
+                    }
+
+                    #container .mockup .top .user_control #new:active {
+                        box-shadow: inset 0 2px 15px -4px rgba(0, 0, 0, 0.2);
+                    }
+
+        #container .mockup .outer-search {
+            width: 100%;
+            position: relative;
+        }
+
+            #container .mockup .outer-search .search-filter {
+                position: relative;
+                width: 600px;
+                margin: auto;
+                margin-top: 25px;
+                overflow: hidden;
+            }
+
+                #container .mockup .outer-search .search-filter .search-container {
+                    display: flex;
+                    width: 100%;
+                    height: 40px;
+                    border-radius: 50px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: 0px 10px 45px -16px rgba(0, 0, 0, 0.1);
+                    align-items: center;
+                }
+
+                    #container .mockup .outer-search .search-filter .search-container .search-icon {
+                        color: #8099aa;
+                        font-size: 22px;
+                        margin: 0 10px;
+                    }
+
+                    #container .mockup .outer-search .search-filter .search-container #search {
+                        width: 100%;
+                        padding-left: 15px;
+                        height: 100%;
+                        border-radius: 50px;
+                        border: none;
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #777;
+                    }
+
+                        #container .mockup .outer-search .search-filter .search-container #search::-webkit-input-placeholder {
+                            font-weight: 500;
+                            font-size: 18px;
+                            color: #8099aa;
+                        }
+
+                        #container .mockup .outer-search .search-filter .search-container #search:focus {
+                            outline-width: 0;
+                        }
+
+                #container .mockup .outer-search .search-filter .filter {
+                    display: flex;
+                    width: 100%;
+                    height: 50px;
+                    margin: 8px 0;
+                    align-items: center;
+                }
+
+                    #container .mockup .outer-search .search-filter .filter .pill {
+                        width: 85px;
+                        height: 35px;
+                        margin-right: 10px;
+                        border-radius: 50px;
+                        box-shadow: 0 3px 20px -4px rgba(0, 0, 0, 0.08);
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        line-height: 35px;
+                        color: #8099aa;
+                        font-weight: 600;
+                    }
+
+                        #container .mockup .outer-search .search-filter .filter .pill:hover {
+                            box-shadow: 0 3px 15px -4px rgba(0, 0, 0, 0.33);
+                            transition: all 0.3s ease;
+                        }
+
+                        #container .mockup .outer-search .search-filter .filter .pill:active {
+                            box-shadow: inset 0 2px 15px -4px rgba(0, 0, 0, 0.2);
+                        }
+
+                    #container .mockup .outer-search .search-filter .filter .active {
+                        background-image: linear-gradient(to right, #0084ff, #58d3ff);
+                        box-shadow: 0 3px 25px -5px #58d3ff;
+                        color: white;
+                    }
+
+                    #container .mockup .outer-search .search-filter .filter .material-icons {
+                        color: #8099aa;
+                    }
+
+        #container .mockup .feeds {
+            display: flex;
+            height: calc(100% - 185px);
+            overflow: auto;
+            padding-left: 100px;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+
+            #container .mockup .feeds h1 {
+                color: #555;
+                font-weight: 700;
+                width: 100%;
+            }
+
+            #container .mockup .feeds .s-1,
+            #container .mockup .feeds .s-2 {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+                flex-basis: auto;
+            }
+
+            #container .mockup .feeds .board {
+                padding-right: 20px;
+                flex-grow: 0;
+                flex-basis: 320px;
+            }
+
+            #container .mockup .feeds .top-challenge {
+                position: relative;
+                width: 300px;
+                height: 330px;
+                border-radius: 15px;
+                box-shadow: 0 6px 50px -10px #58d3ff;
+                flex-basis: auto;
+                flex-shrink: 2;
+                flex-grow: 2;
+                margin-bottom: 25px;
+                margin-right: 20px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                background-image: url("https://assets.materialup.com/uploads/55e489cf-8772-4b80-b5a8-e43ead66857f/preview.jpg");
+                background-size: 158%;
+                background-position: center;
+                overflow: hidden;
+            }
+
+                #container .mockup .feeds .top-challenge:hover {
+                    box-shadow: 0 15px 70px -15px #58d3ff;
+                    transition: all 0.3s ease;
+                }
+
+                #container .mockup .feeds .top-challenge .title-card {
+                    position: relative;
+                    display: block;
+                    font-size: 18px;
+                    color: #fff;
+                    padding: 15px 0 0 20px;
+                    font-weight: 600;
+                    z-index: 10;
+                }
+
+                #container .mockup .feeds .top-challenge .card-body {
+                    color: #fff;
+                    padding: 0 20px;
+                    font-size: 13px;
+                }
+
+                #container .mockup .feeds .top-challenge .forwards {
+                    color: #fff;
+                    position: absolute;
+                    bottom: 15px;
+                    right: 20px;
+                }
+
+                #container .mockup .feeds .top-challenge .title-card {
+                    margin-top: 70%;
+                }
+
+                #container .mockup .feeds .top-challenge .overlay {
+                    position: absolute;
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    background-image: linear-gradient(transparent, #58d3ff);
+                    z-index: 0;
+                }
+
+            #container .mockup .feeds .list-challenge {
+                position: relative;
+                width: 300px;
+                height: 250px;
+                border-radius: 15px;
+                box-shadow: 0 6px 50px -10px #B864FF;
+                flex-basis: auto;
+                flex-shrink: 2;
+                flex-grow: 2;
+                margin-bottom: 25px;
+                margin-right: 20px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                background-image: linear-gradient(to right, #6823f4, #b864ff);
+            }
+
+                #container .mockup .feeds .list-challenge:hover {
+                    box-shadow: 0 15px 70px -15px #B864FF;
+                    transition: all 0.3s ease;
+                }
+
+                #container .mockup .feeds .list-challenge .title-card {
+                    position: relative;
+                    display: block;
+                    font-size: 18px;
+                    color: #fff;
+                    padding: 15px 0 0 20px;
+                    font-weight: 600;
+                    z-index: 10;
+                }
+
+                #container .mockup .feeds .list-challenge .card-body {
+                    color: #fff;
+                    padding: 0 20px;
+                    font-size: 13px;
+                }
+
+                #container .mockup .feeds .list-challenge .forwards {
+                    color: #fff;
+                    position: absolute;
+                    bottom: 15px;
+                    right: 20px;
+                }
+
+                #container .mockup .feeds .list-challenge .challenge-element {
+                    display: flex;
+                    color: white;
+                    align-items: center;
+                    padding: 10px 20px;
+                }
+
+                    #container .mockup .feeds .list-challenge .challenge-element i {
+                        font-size: 18px;
+                        flex: 0;
+                    }
+
+                    #container .mockup .feeds .list-challenge .challenge-element .challenge-info {
+                        display: flex;
+                        flex-direction: column;
+                        align-content: center;
+                        padding: 0 10px;
+                        flex: 1;
+                    }
+
+                        #container .mockup .feeds .list-challenge .challenge-element .challenge-info h5 {
+                            margin: 0;
+                            font-size: 14px;
+                            font-weight: 400;
+                        }
+
+                        #container .mockup .feeds .list-challenge .challenge-element .challenge-info .challengers {
+                            font-size: 11px;
+                            color: #bbb;
+                        }
+
+                    #container .mockup .feeds .list-challenge .challenge-element .vote {
+                        width: 74px;
+                        height: 30px;
+                        margin-right: 0px;
+                        border-radius: 50px;
+                        box-shadow: 0 3px 20px -4px rgba(0, 0, 0, 0.08);
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        line-height: 30px;
+                        flex-basis: auto;
+                        background: white;
+                        color: #6823f4;
+                        font-weight: 600;
+                    }
+
+                        #container .mockup .feeds .list-challenge .challenge-element .vote:hover {
+                            box-shadow: 0 3px 15px -4px rgba(0, 0, 0, 0.33);
+                            transition: all 0.3s ease;
+                        }
+
+                        #container .mockup .feeds .list-challenge .challenge-element .vote:active {
+                            box-shadow: inset 0 2px 15px -4px rgba(0, 0, 0, 0.2);
+                        }
+
+                #container .mockup .feeds .list-challenge .viewall {
+                    width: 100px;
+                    height: 30px;
+                    margin-right: 0px;
+                    border-radius: 50px;
+                    box-shadow: 0 3px 20px -4px rgba(0, 0, 0, 0.08);
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    line-height: 30px;
+                    flex-basis: auto;
+                    background: white;
+                    color: #6823f4;
+                    font-weight: 600;
+                    margin: 6px 20px;
+                }
+
+                    #container .mockup .feeds .list-challenge .viewall:hover {
+                        box-shadow: 0 3px 15px -4px rgba(0, 0, 0, 0.33);
+                        transition: all 0.3s ease;
+                    }
+
+                    #container .mockup .feeds .list-challenge .viewall:active {
+                        box-shadow: inset 0 2px 15px -4px rgba(0, 0, 0, 0.2);
+                    }
+
+            #container .mockup .feeds .today {
+                flex-basis: 640px;
+                flex-grow: 2;
+                flex-shrink: 2;
+            }
+
+            #container .mockup .feeds .yesterday {
+                flex-basis: 320px;
+                flex-grow: 2;
+                flex-shrink: 3;
+            }
+
+.card {
+    position: relative;
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px -10px rgba(0, 0, 0, 0.2);
+    flex-basis: auto;
+    flex-shrink: 2;
+    flex-grow: 2;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 10px 45px -15px rgba(0, 0, 0, 0.35);
+        transition: all 0.3s ease;
+    }
+
+    .card .title-card {
+        position: relative;
+        display: block;
+        font-size: 18px;
+        color: #777;
+        padding: 15px 0 0 20px;
+        font-weight: 600;
+        z-index: 10;
+    }
+
+    .card .card-body {
+        color: #777;
+        padding: 0 20px;
+        font-size: 13px;
+    }
+
+    .card .forwards {
+        color: #777;
+        position: absolute;
+        bottom: 15px;
+        right: 20px;
+    }
+
+    .card .add {
+        width: 35px;
+        height: 35px;
+        margin-right: 20px;
+        border-radius: 50%;
+        box-shadow: 0 3px 20px -4px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        line-height: 35px;
+        position: absolute;
+        top: 15px;
+        background: white;
+        right: 0;
+    }
+
+        .card .add:hover {
+            box-shadow: 0 3px 15px -4px rgba(0, 0, 0, 0.33);
+            transition: all 0.3s ease;
+        }
+
+        .card .add:active {
+            box-shadow: inset 0 2px 15px -4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card .add i {
+            line-height: 35px;
+        }
+
+    .card img {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .card .card-footer {
+        position: absolute;
+        display: flex;
+        bottom: 0;
+        width: 100%;
+        min-height: 60px;
+        height: auto;
+        background: white;
+        padding: 5px 20px;
+        align-items: center;
+    }
+
+        .card .card-footer .card-info {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            flex: 1;
+        }
+
+            .card .card-footer .card-info h4 {
+                font-size: 14px;
+                margin: 0;
+                color: #555;
+            }
+
+            .card .card-footer .card-info .card-maker {
+                font-size: 12px;
+                color: #8099aa;
+                cursor: pointer;
+            }
+
+                .card .card-footer .card-info .card-maker:hover {
+                    text-decoration: underline;
+                }
+
+        .card .card-footer .costs {
+            color: #8099aa;
+            margin-right: 10px;
+        }
+
+        .card .card-footer .upvotes {
+            font-weight: 700;
+        }
+
+        .card .card-footer .card-vote {
+            display: flex;
+            flex-direction: column;
+            color: #777;
+            align-items: center;
+        }
+
+            .card .card-footer .card-vote .up {
+                position: absolute;
+                top: 5px;
+            }
+
+.placeholder {
+    height: 18px;
+    background: #f1f1f1;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.doShadow {
+    z-index: 999;
+    box-shadow: 0 15px 40px -25px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.4s ease;
+    display: block;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }

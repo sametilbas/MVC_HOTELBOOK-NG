@@ -15,18 +15,27 @@ namespace bitirme.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var x = db.sehirs.Where(a => a.sehirID > 0).ToList();
-            return View(x);
+            HomeIndexView hm = new HomeIndexView();
+            hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
+            hm.sehir = db.sehirs.Where(a => a.sehirID > 0).ToList();
+            hm.oteloda = db.otelodas.Where(a => a.odaID > 0).Take(3).ToList();           
+            return View(hm);
         }
         public ActionResult oteller(string sad)
         {
-            var oteller = db.otels.Where(x=>x.sehir==sad).ToList();
-            return View(oteller);
+            HomeIndexView hm = new HomeIndexView();
+            hm.otel = db.otels.Where(x => x.sehir == sad).ToList();
+            hm.sehir = db.sehirs.Where(a => a.sehirID > 0).Take(3).ToList();
+            hm.oteloda = db.otelodas.Where(a => a.odaID > 0).Take(3).ToList();
+            return View(hm);
         }
         public ActionResult odalar(int oad)
         {
-            var oteldetay = db.otelodas.Where(x => x.otelID == oad).ToList();
-            return View(oteldetay);
+            HomeIndexView hm = new HomeIndexView();
+            hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
+            hm.sehir = db.sehirs.Where(a => a.sehirID > 0).Take(3).ToList();
+            hm.oteloda = db.otelodas.Where(x => x.otelID == oad).ToList();
+            return View(hm);
         }
         public ActionResult res()
         {

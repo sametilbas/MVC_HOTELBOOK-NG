@@ -1,181 +1,101 @@
-﻿@model IEnumerable<bitirme.Models.sehir>
+﻿@model bitirme.Models.HomeIndexView
 @{
+    /**/
+
     Layout = null;
 }
-
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="~/css/x.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-    <link href="~/css/homepage.css" rel="stylesheet" />
-    <style>
-        .areabox {
-            border: 1px solid #ddd;
-            padding: 10px;
-        }
-
-            .areabox img {
-                max-width: 100%;
-            }
-
-            .areabox a.demolink {
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                width: max-content;
-                background: none;
-                color: #474747;
-                font-size: 12px;
-                padding-right: 2em;
-                padding-left: 2em;
-                border-color: #ddd;
-            }
-
-                .areabox a.demolink i {
-                    margin: 0 .4rem;
-                    font-size: 16px;
-                    color: #333;
-                }
-    </style>
 </head>
 <body>
-    <header class="main-header" id="Home">
-        <div class="main-navbar-menu">
-            <div class="rodcontain">
-                <div class="rod">
+    <div id="container">
+        <div class="mockup">
+            <div class="top">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink" style="color:blue;font-size:30px"></i>
                 </div>
-            </div>
-        </div>
-        <div class="list-container">
-            <div class="container-content">
-                <div class="content-item">
-                    <div class="item-link">
-                        <div class="string-1">
-                        </div>
-                        <div class="group-1">
-                            <a style="color:rgba(0, 0, 0, 0.65)" href="#Home">Anasayfa</a>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-left:20px;" class="content-item">
-                    <div class="item-link">
-                        <div class="string-2">
-                        </div>
-                        <div class="group-2">
-                            <a style="color:rgba(0, 0, 0, 0.65)" href="#Services" target="_blank">Hakkımızda</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-item">
-                    <div class="item-link">
-                        <div class="string-3">
-                        </div>
-                        <div class="group-1">
-                            <a style="color:rgba(0, 0, 0, 0.65)" href="#Portfolio" target="_blank">Şehirler</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-item">
-                    <div class="item-link">
-                        <div class="string-4">
-                        </div>
-                        <div class="group-2">
-                            <a style="color:rgba(0, 0, 0, 0.65)" href="@Url.Action("HotelLogin","Hotel")" target="_blank">Otel Giriş/Kayıt</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-item">
-                    <div class="item-link">
-                        <div class="string-5">
-                        </div>
-                        <div class="group-1">
-                            <a style="color:rgba(0, 0, 0, 0.65)" href="@Url.Action("userRegister","user")" target="_blank"> Giriş/Kayıt</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h1 class="header-heading">
-                Hadi Tatile
-            </h1>
-        </div>
-    </header>
-    <section id="Services">
-        <div class="Services-container">
-            <div class="Services-heading">
-                Otel için yardımamı ihtiyacınız var!
-            </div>
-            <div class="Services-afterheading">
-                Gitmek İstediğiniz Şehri Seçiniz
-            </div>
-        </div>
-        @foreach (var x in Model)
-        {
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <div class="services-grid-item">
+                <div class="sidebar-brand-text mx-3" style="color:blue;font-size:25px;font-style:italic">Hadi Tatile</div>
+                <ul>
+                    <li>Hakkımızda</li>
+                    <li>Oteller</li>
+                    <li>Şehirler</li>
 
-                    <div class="services-section">
-                        <div class="picture-section-content">
-                            <img src="@Url.Content(x.sehirresim)" alt="The image">
-                            <div class="image-onhover-first-bgcolor">
-                            </div>
-                            <div class="image-onhover-second-bgcolor">
-                            </div>
-                        </div>
+                </ul>
+                <div class="user_control">
+                    <div class="new" style="font-size:10px;font-weight:800">
+                        <a style="color:ButtonShadow;font-size:15px; font-weight:800;" href="@Url.Action("HotelLogin","Hotel")">Otel Giriş/Kayıt</a>
                     </div>
-
-                    <div class="services-box">
-                        <div class="services-box-content">
-                            <div class="services-box-frontside">
-                                <div class="services-box-frontside-content">
-                                    <div class="services-box-frontside-heading">
-                                        <p style="margin-left:300px;margin-top:30px"><b>@x.sehirAd</b></p>  <img src="@Url.Content(x.sehirresim)" style="width:510px;height:240px;;margin-right:60px" alt="The image">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="services-box-backside">
-                                <div class="services-box-backside-content">
-                                    <div class="services-box-backside-caption">
-                                        @x.sehiraciklama
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="servicesbox-onhover-first-bgcolor">
-                        </div>
-                        <div class="servicesbox-onhover-second-bgcolor">
-                        </div>
+                    <div class="new" style="font-size:10px;font-weight:800">
+                        <a style="color:ButtonShadow;font-size:15px; font-weight:800;" href="@Url.Action("userRegister","user")">Giriş/Kayıt</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
-                    <p><b><a href="@Url.Action("oteller","Home",new { sad=x.sehirAd})" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a></b> </p>
-
                 </div>
             </div>
-        }
-    </section>
-    <section id="Portfolio"></section>
-    <section id="About"></section>
-    <section id="Support"></section>
-</body>
-</html>
-@*<div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    @foreach (var x in Model)
+            <div class="outer-search">
+                <div class="search-filter">
+                    <div class="search-container">
+                        <i class="glyphicon glyphicon-search" style="opacity:0.6;font-size:25px;margin-left:5px"></i>
+                        <input type="text" id="search" style="font-style:italic" placeholder="Arayınız..." />
+                    </div><br /><br />
+                </div>
+            </div>
+            <div class="feeds" id="feeds">
+                <div class="board s-1">
+                    @foreach (var item in Model.otel)
                     {
-                        <div class="col-md-3">
-                            <div class="card areabox" style="width: 18rem;">
-                                <img src="@Url.Content(x.sehirresim)" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text text-center">@x.sehirAd</p>
-                                    <a href="@Url.Action("oteldetay","Home")" class="btn btn-success demolink"><i class="fa fa-search"></i>DETAYA GİT</a>
+                        <div class="card top-challenge">
+                            <div class="add">                           
+                                <p><b><a href="@Url.Action("odalar","Home",new { oad=item.otelID})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                            </div>
+                            <img src="@Url.Content(item.or)" />
+                            <div class="card-footer">
+                                <div class="card-info">
+                                    <span class="card-maker" style="font-weight:700">Otel Adı:@item.otelAdi <br />
+                                    Otel Telefon:@item.otelTel</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="today s-2">
+                    @foreach (var item in Model.sehir)
+                    {
+                        <div class="card">
+                            <div class="add">
+                                <p><b><a href="@Url.Action("oteller","Home",new { sad=item.sehirAd})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                            </div>
+                            <img src="@Url.Content(item.sehirresim)" />
+                            <div class="card-footer">
+                                <div class="card-info">
+                                    <h4>@item.sehirAd</h4>
+                                    <span class="card-maker"></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="yesterday s-2">
+                    @foreach (var item in Model.oteloda)
+                    {
+                        <div class="card top-challenge">
+                            <div class="add">
+                                <p><b><a href="@Url.Action("odadetay","Home",new { odaid=item.odaID,otelid=item.otelID})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                            </div>
+                            <img src="@Url.Content(item.odaresim)" />
+                            <div class="card-footer">
+                                <div class="card-info">
+                                    <span class="card-maker" style="font-weight:700">Oda Ücreti:@item.odaucret TL</span>
                                 </div>
                             </div>
                         </div>
@@ -183,118 +103,15 @@
                 </div>
             </div>
         </div>
-    </div>*@
-
-@*<div class="container-fluid">  buraya sistemin özellikleri gelecek
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            <div class="services-grid-item">
-                <div class="services-section">
-                    <div class="picture-section-content">
-                        <img src="http://lorempixel.com/100/100" alt="The image">
-                        <div class="image-onhover-first-bgcolor">
-                        </div>
-                        <div class="image-onhover-second-bgcolor">
-                        </div>
-                    </div>
-                </div>
-                <div class="services-box">
-                    <div class="services-box-content">
-                        <div class="services-box-frontside">
-                            <div class="services-box-frontside-content">
-                                <div class="services-box-frontside-heading">
-                                    Service Number 1
-                                </div>
-                            </div>
-                        </div>
-                        <div class="services-box-backside">
-                            <div class="services-box-backside-content">
-                                <div class="services-box-backside-caption">
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="servicesbox-onhover-first-bgcolor">
-                    </div>
-                    <div class="servicesbox-onhover-second-bgcolor">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            <div class="services-grid-item">
-                <div class="services-section">
-                    <div class="picture-section-content">
-                        <img src="http://lorempixel.com/100/100" alt="The image">
-                        <div class="image-onhover-first-bgcolor">
-                        </div>
-                        <div class="image-onhover-second-bgcolor">
-                        </div>
-                    </div>
-                </div>
-                <div class="services-box">
-                    <div class="services-box-content">
-                        <div class="services-box-frontside">
-                            <div class="services-box-frontside-content">
-                                <div class="services-box-frontside-heading">
-                                    Service Number 2
-                                </div>
-                            </div>
-                        </div>
-                        <div class="services-box-backside">
-                            <div class="services-box-backside-content">
-                                <div class="services-box-backside-caption">
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="servicesbox-onhover-first-bgcolor">
-                    </div>
-                    <div class="servicesbox-onhover-second-bgcolor">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            <div class="services-grid-item">
-                <div class="services-section">
-                    <div class="picture-section-content">
-                        <img src="http://lorempixel.com/100/100" alt="The image">
-                        <div class="image-onhover-first-bgcolor">
-                        </div>
-                        <div class="image-onhover-second-bgcolor">
-                        </div>
-                    </div>
-                </div>
-                <div class="services-box">
-                    <div class="services-box-content">
-                        <div class="services-box-frontside">
-                            <div class="services-box-frontside-content">
-                                <div class="services-box-frontside-heading">
-                                    Service Number 3
-                                </div>
-                            </div>
-                        </div>
-                        <div class="services-box-backside">
-                            <div class="services-box-backside-content">
-                                <div class="services-box-backside-caption">
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor. Lorem ipsum dolor sit amet.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="servicesbox-onhover-first-bgcolor">
-                    </div>
-                    <div class="servicesbox-onhover-second-bgcolor">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
+    </div>
+    <script>
+$(".feeds").scroll(function(){
+    if($(this).scrollTop() > 50){
+      $(".outer-search").addClass("doShadow");
+    }else{
+      $(".outer-search").removeClass("doShadow");
+    }
+  });
+    </script>
+</body>
+</html>
