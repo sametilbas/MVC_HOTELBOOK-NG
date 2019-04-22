@@ -1731,6 +1731,7 @@
     <Content Include="css\hotelhomepage.css" />
     <Content Include="css\loginandregister.css" />
     <Content Include="css\otelprofile.css" />
+    <Content Include="css\oteltarih.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\tooplate-style.css" />
@@ -1742,6 +1743,7 @@
     <Content Include="js\jquery.stellar.min.js" />
     <Content Include="js\loginandregister.js" />
     <Content Include="js\otelprofile.js" />
+    <Content Include="js\oteltarih.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\smoothscroll.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -2060,6 +2062,7 @@
     <Compile Include="Models\otelresim.cs" />
     <Compile Include="Models\OurDbContext.cs" />
     <Compile Include="Models\ozellik.cs" />
+    <Compile Include="Models\rezerve.cs" />
     <Compile Include="Models\sehir.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2103,6 +2106,7 @@
     <Content Include="Views\Home\rezerve.cshtml" />
     <Content Include="Views\Home\odadetay.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\oteltarih.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

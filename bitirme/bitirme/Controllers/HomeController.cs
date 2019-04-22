@@ -29,12 +29,25 @@ namespace bitirme.Controllers
             hm.oteloda = db.otelodas.Where(a => a.odaID > 0).Take(3).ToList();
             return View(hm);
         }
-        public ActionResult odalar(int oad)
+        public ActionResult oteltarih(int oad)
         {
             HomeIndexView hm = new HomeIndexView();
+            otel otel = db.otels.Find(oad);
+            hm.otelad = otel.otelAdi;
+            hm.otelID = oad;
+            return View(hm);
+        }
+        public ActionResult odalar(bitirme.Models.HomeIndexView hı)
+        {
+            //21.5.2019 00:00:00 gelen tarih
+            HomeIndexView hm = new HomeIndexView();
+            ViewBag.gtarih = hı.gtarih;
+            ViewBag.ctarih = hı.ctarih;
+            ViewBag.kisi = hı.kisi;
             hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
             hm.sehir = db.sehirs.Where(a => a.sehirID > 0).Take(3).ToList();
-            hm.oteloda = db.otelodas.Where(x => x.otelID == oad).ToList();
+            hm.oteloda = db.otelodas.Where(x => x.otelID == hı.otelID).ToList();
+            hm.rezer = db.rezerves.Where(x=>x.rezerveID>0).ToList();
             return View(hm);
         }
         public ActionResult res()

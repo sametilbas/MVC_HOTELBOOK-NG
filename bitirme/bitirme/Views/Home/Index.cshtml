@@ -23,24 +23,22 @@
     <div id="container">
         <div class="mockup">
             <div class="top">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink" style="color:blue;font-size:30px"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3" style="color:blue;font-size:25px;font-style:italic">Hadi Tatile</div>
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","Home")">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink" style="color:blue;font-size:30px"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3" style="color:blue;font-size:25px;font-style:italic">Hadi Tatile</div>
+                </a>
                 <ul>
-                    <li>Hakkımızda</li>
-                    <li>Oteller</li>
-                    <li>Şehirler</li>
-
+                    <li><a href="@Url.Action("Index","Home")">Hakkımızda</a></li>
+                    <li><a href="@Url.Action("oteller","Home")">Şehirler</a></li>
+                    <li><a href="@Url.Action("odalar","Home")">Odalar</a></li>
+                    <li><a href="@Url.Action("Index","Home")">Şehirler</a></li>
                 </ul>
-                <div class="user_control">
-                    <div class="new" style="font-size:10px;font-weight:800">
-                        <a style="color:ButtonShadow;font-size:15px; font-weight:800;" href="@Url.Action("HotelLogin","Hotel")">Otel Giriş/Kayıt</a>
-                    </div>
-                    <div class="new" style="font-size:10px;font-weight:800">
-                        <a style="color:ButtonShadow;font-size:15px; font-weight:800;" href="@Url.Action("userRegister","user")">Giriş/Kayıt</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    </div>
-                </div>
+                <ul style="margin-left:700px">
+                    <li><a href="@Url.Action("userRegister","user")">Giriş/Kayıt</a></li>
+                    <li><a href="@Url.Action("HotelLogin","Hotel")">Otel Giriş/Kayıt</a></li>
+                </ul>
             </div>
             <div class="outer-search">
                 <div class="search-filter">
