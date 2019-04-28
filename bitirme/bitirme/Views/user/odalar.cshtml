@@ -30,14 +30,14 @@
                     <div class="sidebar-brand-text mx-3" style="color:blue;font-size:25px;font-style:italic">Hadi Tatile</div>
                 </a>
                 <ul>
-                    <li><a href="@Url.Action("Index","Home")">Hakkımızda</a></li>
-                    <li><a href="@Url.Action("oteller","Home")">Şehirler</a></li>
-                    <li><a href="@Url.Action("odalar","Home")">Odalar</a></li>
-                    <li><a href="@Url.Action("Index","Home")">Şehirler</a></li>
+                    <li><a href="@Url.Action("Index","user")">Hakkımızda</a></li>
+                    <li><a href="@Url.Action("oteller","user")">Şehirler</a></li>
+                    <li><a href="@Url.Action("odalar","user")">Odalar</a></li>
+                    <li><a href="@Url.Action("Index","user")">Şehirler</a></li>
                 </ul>
                 <ul style="margin-left:700px">
-                    <li><a href="@Url.Action("userRegister","user")">Giriş/Kayıt</a></li>
-                    <li><a href="@Url.Action("HotelLogin","Hotel")">Otel Giriş/Kayıt</a></li>
+                    <li><a href="@Url.Action("userUpdate","user")">Profil</a></li>
+                    <li><a href="@Url.Action("userUpdate","user")">Rezervasyonlarım</a></li>
                 </ul>
             </div>
             <div class="outer-search">
@@ -57,7 +57,7 @@
                     {
                         <div class="card top-challenge">
                             <div class="add">
-                                <p><b><a href="@Url.Action("oteller","Home",new { sad=item.sehirAd})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                <p><b><a href="@Url.Action("oteller","user",new { sad=item.sehirAd})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
                             </div>
                             <img src="@Url.Content(item.sehirresim)" />
                             <div class="card-footer">
@@ -73,7 +73,7 @@
                 <div class="today s-2">
                     @foreach (var item in Model.oteloda)
                     {
-                        if (Model.rezer.Count() !=0)
+                        if (Model.rezer.Count() != 0)
                         {
                             foreach (var q in Model.rezer)
                             {
@@ -87,13 +87,13 @@
                                         {
                                             <div class="card">
                                                 <div class="add">
-                                                    <p><b><a href="@Url.Action("odadetay", "Home", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                                    <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
                                                 </div>
                                                 <img src="@Url.Content(item.odaresim)" />
                                                 <div class="card-footer">
                                                     <div class="card-info">
                                                         <span class="card-maker" style="font-weight:700">
-                                                            Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "Home", new { odaid = item.odaID, otelid = item.otelID,gtarih=ViewBag.gtarih,ctarih=ViewBag.ctarih,kisi=ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                                            Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID,userid=ViewBag.userID,gtarih=ViewBag.gtarih,ctarih=ViewBag.ctarih,kisi=ViewBag.kisi})"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -107,13 +107,13 @@
                         {
                             <div class="card">
                                 <div class="add">
-                                    <p><b><a href="@Url.Action("odadetay", "Home", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                    <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
                                 </div>
                                 <img src="@Url.Content(item.odaresim)" />
                                 <div class="card-footer">
                                     <div class="card-info">
                                         <span class="card-maker" style="font-weight:700">
-                                            Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "Home", new { odaid = item.odaID, otelid = item.otelID,gtarih=ViewBag.gtarih,ctarih=ViewBag.ctarih,kisi=ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                            Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID,gtarih=ViewBag.gtarih,ctarih=ViewBag.ctarih,kisi=ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
                                         </span>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
                     {
                         <div class="card top-challenge">
                             <div class="add">
-                                <p><b><a href="@Url.Action("odalar","Home",new { oad=item.otelID})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                <p><b><a href="@Url.Action("odalar","user",new { oad=item.otelID})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
                             </div>
                             <img src="@Url.Content(item.or)" />
                             <div class="card-footer">

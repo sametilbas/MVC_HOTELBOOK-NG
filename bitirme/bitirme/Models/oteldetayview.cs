@@ -10,5 +10,7 @@ namespace bitirme.Models
         public IEnumerable<otel> otel { get; set; }
         public IEnumerable<otelresim> otelresim { get; set; }
         public IEnumerable<oteloda> oteloda { get; set; }
+        public IEnumerable<ozellik> ozelliks { get; set; }
+        public IEnumerable<kategori> kategoris { get; set; }
     }
 }

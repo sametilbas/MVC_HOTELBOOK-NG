@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
 </head>
 <body>
     <div id="container">
@@ -30,70 +32,75 @@
                     <div class="sidebar-brand-text mx-3" style="color:blue;font-size:25px;font-style:italic">Hadi Tatile</div>
                 </a>
                 <ul>
-                    <li><a href="@Url.Action("Index","Home")">Hakkımızda</a></li>
-                    <li><a href="@Url.Action("oteller","Home")">Şehirler</a></li>
-                    <li><a href="@Url.Action("odalar","Home")">Odalar</a></li>
-                    <li><a href="@Url.Action("Index","Home")">Şehirler</a></li>
+                    <li><a href="@Url.Action("Index","user")">Hakkımızda</a></li>
+                    <li><a href="@Url.Action("oteller","user")">Şehirler</a></li>
+                    <li><a href="@Url.Action("odalar","user")">Odalar</a></li>
+                    <li><a href="@Url.Action("Index","user")">Şehirler</a></li>
                 </ul>
                 <ul style="margin-left:700px">
-                    <li><a href="@Url.Action("userRegister","user")">Giriş/Kayıt</a></li>
-                    <li><a href="@Url.Action("HotelLogin","Hotel")">Otel Giriş/Kayıt</a></li>
+                    <li><a href="@Url.Action("userUpdate","user")">Profil</a></li>
+                    <li><a href="@Url.Action("userUpdate","user")">Rezervasyonlarım</a></li>
                 </ul>
             </div>
             <div class="outer-search">
                 <div class="search-filter">
                     <div class="search-container">
-                            <i class="glyphicon glyphicon-search" style="opacity:0.6;font-size:25px;margin-left:5px"></i>
-                            <input type="text" id="search" name="search" style="font-style:italic" placeholder="Arayınız..." />
-                        </div><br /><br />
+                        <i class="glyphicon glyphicon-search" style="opacity:0.6;font-size:25px;margin-left:5px"></i>
+                        <input type="text" id="search" style="font-style:italic" placeholder="Arayınız..." />
+                    </div><br /><br />
                 </div>
             </div>
+
             <div class="feeds" id="feeds">
                 <div class="board s-1">
-                    @foreach (var item in Model.otel)
+                    @foreach (var item in Model.sehir)
                     {
                         <div class="card top-challenge">
-                            <div class="add">                           
-                                <p><b><a href="@Url.Action("odalar","Home",new { oad=item.otelID})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                            <div class="add">
+                                <p><b><a href="@Url.Action("oteller","user",new { sad=item.sehirAd})"><i style="height:50px;" class="btn btn-info btn-lg">+</i></a></b></p>
                             </div>
-                            <img src="@Url.Content(item.or)" />
+                            <img src="@Url.Content(item.sehirresim)" />
                             <div class="card-footer">
                                 <div class="card-info">
-                                    <span class="card-maker" style="font-weight:700">Otel Adı:@item.otelAdi <br />
-                                    Otel Telefon:@item.otelTel</span>
+                                    <span class="card-maker" style="font-weight:700">
+                                        Şehir Adı:@item.sehirAd
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
+
                 <div class="today s-2">
-                    @foreach (var item in Model.sehir)
+                    @foreach (var item in Model.otel)
                     {
                         <div class="card">
                             <div class="add">
-                                <p><b><a href="@Url.Action("oteller","Home",new { sad=item.sehirAd})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                <p><b><a href="@Url.Action("oteltarih", "user", new { oad = item.otelID,userid=Session["userID"]})"><i style="height:50px" class="btn btn-info btn-lg">+</i></a></b></p> @*href="@Url.Action("odalar", "Home", new { oad = item.otelID })"*@
                             </div>
-                            <img src="@Url.Content(item.sehirresim)" />
+                            <img src="@Url.Content(item.or)" />
                             <div class="card-footer">
                                 <div class="card-info">
-                                    <h4>@item.sehirAd</h4>
-                                    <span class="card-maker"></span>
+                                    <span class="card-maker" style="font-weight:700">
+                                        Otel Adı:@item.otelAdi <b><a href="@Url.Action("oteldetay", "user", new { oad = item.otelID })"><i class=" btn-info" style="margin-left:100px">Otel Detaya Git</i></a></b> <br />
+                                        Otel Telefon:@item.otelTel
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
                 <div class="yesterday s-2">
-                    @foreach (var item in Model.oteloda)
+                    @foreach (var a in Model.oteloda)
                     {
                         <div class="card top-challenge">
                             <div class="add">
-                                <p><b><a href="@Url.Action("odadetay","Home",new { odaid=item.odaID,otelid=item.otelID})"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                <p><b><a href="@Url.Action("odadetay","user",new { odaid=a.odaID,otelid=a.otelID})"><i style="height:50px;" class="btn btn-info btn-lg">+</i></a></b></p>
                             </div>
-                            <img src="@Url.Content(item.odaresim)" />
+                            <img src="@Url.Content(a.odaresim)" />
                             <div class="card-footer">
                                 <div class="card-info">
-                                    <span class="card-maker" style="font-weight:700">Oda Ücreti:@item.odaucret TL</span>
+                                    <span class="card-maker" style="font-weight:700">Oda Ücreti:@a.odaucret TL</span>
                                 </div>
                             </div>
                         </div>
@@ -111,5 +118,7 @@ $(".feeds").scroll(function(){
     }
   });
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
 </html>

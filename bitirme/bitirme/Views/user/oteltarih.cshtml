@@ -1,0 +1,62 @@
+﻿@model bitirme.Models.HomeIndexView
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>oteltarih</title>
+    <link rel="stylesheet" href="~/css/oteltarih.css" />
+</head>
+<body>
+    <div class="diamond"></div>
+    <div class="form-wrap">
+        <h2 class="mob">Hotel Booking Form</h2>
+        <h3 class="mob">Mobile Version</h3>
+        <h5 class="mob">view on a desktop for the full experience</h5>
+        @using (Html.BeginForm("odalar", "user", FormMethod.Post))
+        {
+            <form action="">
+                <div class="location">
+                    @Html.HiddenFor(model => model.otelID)
+                    @Html.HiddenFor(model => model.userID)
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.otelad, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="guests">
+                    <label for="guests">KİŞİ SAYISI</label><br /><br />
+                    @Html.EditorFor(model => model.kisi, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="dates">
+                    <div class="arrival">
+                        <label for="arrival">Giriş Tarihi</label><br />
+                        <input name="gtarih" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="@DateTime.Now" />
+                    </div>
+                    <div class="departure">
+                        <label for="arrival">Çıkış Tarihi</label><br />
+                        <input name="ctarih" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="@DateTime.Now" />
+                    </div>
+                </div>
+                <input type="submit" value="Bak" class="btn" />
+            </form>
+        }
+        <div class="linkbox">
+            <div class="links">
+                <div class="origin">
+                    <p>Check out Seth Coelen's original design over on dribbble</p><a href="https://dribbble.com/shots/2464177-Daily-UI-067-Hotel-Booking" target="_blank"><i class="fa fa-dribbble"></i></a>
+                </div>
+                <div class="me">
+                    <p>Why not take a look at my other pens while you're here</p><a href="https://codepen.io/lewisvrobinson"><i class="fa fa-codepen"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/oteltarih.js"></script>
+</body>
+</html>

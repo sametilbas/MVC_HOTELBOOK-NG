@@ -240,19 +240,20 @@ namespace bitirme.Controllers
         [HttpPost]
         public ActionResult otelozellik(bitirme.Models.ozellik oz, int? otelid)
         {
-            oz.kategoriID = string.Join(",", oz.selectedID);
+           // oz.kategoriID = string.Join(",", oz.selectedID);
             using (OurDbContext db = new OurDbContext())
             {
                 if (oz.ozellikID == 0)
                 {
-                    oz.otelID = otelid;
-                    db.ozelliks.Add(oz);
+                    for (int i = 0; i < oz.selectedID.Length; i++)
+                    {
+                        var temp = oz.selectedID[i];
+                        oz.kategoriID = temp;
+                        oz.otelID = otelid;
+                        db.ozelliks.Add(oz);
+                        db.SaveChanges();
+                    }
                 }
-                else
-                {
-                    db.Entry(oz).State = EntityState.Modified;
-                }
-                db.SaveChanges();
             }
             return RedirectToAction("otelozellik", new { id = 0 });
         }

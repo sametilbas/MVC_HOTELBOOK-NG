@@ -15,6 +15,10 @@ namespace bitirme.Models
         public virtual otel otel { get; set; }
         public Nullable<int> odaID { get; set; }
         public virtual oteloda oteloda { get; set; }
+        public Nullable<int> userID { get; set; }
+        public virtual User user { get; set; }
         public bool Durum { get; set; }
+        public  int gunsayisi { get; set; }
+        public int ucret { get; set; }
     }
 }

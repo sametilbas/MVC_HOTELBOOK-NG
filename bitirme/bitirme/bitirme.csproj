@@ -1730,6 +1730,8 @@
     <Content Include="css\homepage.css" />
     <Content Include="css\hotelhomepage.css" />
     <Content Include="css\loginandregister.css" />
+    <Content Include="css\oteldetay.css" />
+    <Content Include="css\oteldetayslider.css" />
     <Content Include="css\otelprofile.css" />
     <Content Include="css\oteltarih.css" />
     <Content Include="css\owl.carousel.css" />
@@ -1742,6 +1744,7 @@
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.stellar.min.js" />
     <Content Include="js\loginandregister.js" />
+    <Content Include="js\oteldetay.js" />
     <Content Include="js\otelprofile.js" />
     <Content Include="js\oteltarih.js" />
     <Content Include="js\owl.carousel.min.js" />
@@ -2103,10 +2106,16 @@
     <Content Include="Views\Hotel\otelozellik.cshtml" />
     <Content Include="Views\Hotel\otelresimEkle.cshtml" />
     <Content Include="Views\Home\oteldetay.cshtml" />
-    <Content Include="Views\Home\rezerve.cshtml" />
     <Content Include="Views\Home\odadetay.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\oteltarih.cshtml" />
+    <Content Include="Views\Home\rezerve.cshtml" />
+    <Content Include="Views\user\oteller.cshtml" />
+    <Content Include="Views\user\oteltarih.cshtml" />
+    <Content Include="Views\user\odalar.cshtml" />
+    <Content Include="Views\user\oteldetay.cshtml" />
+    <Content Include="Views\user\odadetay.cshtml" />
+    <Content Include="Views\user\rezerve.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
