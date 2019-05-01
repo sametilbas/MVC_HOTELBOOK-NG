@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>oteltarih</title>
+    <title>Rezervasyon</title>
     <link rel="stylesheet" href="~/css/oteltarih.css" />
 </head>
 <body>
@@ -19,39 +19,46 @@
         <h5 class="mob">view on a desktop for the full experience</h5>
         @using (Html.BeginForm("rezerve", "Home", FormMethod.Post))
         {
-        <form action="">
-            <div class="location">
-                @Html.HiddenFor(model => model.otelID)
-                @Html.EditorFor(model => model.odaID)
-                <div class="form-group">
-                    <label for="guests">OTEL ADI</label><br /><br />
-                    @Html.EditorFor(model => model.otelad, new { htmlAttributes = new { @class = "form-control" } })
-                </div> @*oteladı*@
-            </div>
-            <div class="guests">
-                <label for="guests">KİŞİ SAYISI</label><br /><br />
-                @Html.EditorFor(model => model.kisi, new { htmlAttributes = new { @class = "form-control" } })
-            </div>@*kisi sayısı*@
-            <div class="guests">
-                <label for="guests">GÜN SAYISI</label><br /><br />
-                @Html.EditorFor(model => model.gunsayisi, new { htmlAttributes = new { @class = "form-control" } })
-            </div>@*toplam gun*@
-            <div class="guests">
-                <label for="guests">TOPLAM ÜCRET</label><br /><br />
-                @Html.EditorFor(model => model.ucret, new { htmlAttributes = new { @class = "form-control" } })
-            </div>@*toplam ücret*@
-            <div class="dates">
-                <div class="arrival">
-                    <label for="arrival">Giriş Tarihi Seçiniz</label><br />
-                    <input name="gtarih" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="10/03/2016" required />
+            if (ViewBag.mesaj != null)
+            {
+                <div style="font-size:medium;font-weight:800;">
+                    @Html.Raw(ViewBag.mesaj)
+                    <a href="@Url.Action("userRegister","user")">Kullanıcı Giriş</a>
                 </div>
-                <div class="departure">
-                    <label for="arrival">Çıkış Tarihi Seçiniz</label><br />
-                    <input name="ctarih" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="05/11/2016" required />
+            }
+            <form action="">
+                <div class="location">
+                    @Html.HiddenFor(model => model.otelID)
+                    @Html.HiddenFor(model => model.odaID)
+                    <div class="form-group">
+                        <label for="guests">OTEL ADI</label><br /><br />
+                        @Html.EditorFor(model => model.otelad, new { htmlAttributes = new { @class = "form-control" } })
+                    </div> @*oteladı*@
                 </div>
-            </div>@*giris çıkış tarihleri*@
-            <input type="submit" value="Rezerve Et" class="btn" />
-        </form>
+                <div class="guests">
+                    <label for="guests">KİŞİ SAYISI</label><br /><br />
+                    @Html.EditorFor(model => model.kisi, new { htmlAttributes = new { @class = "form-control" } })
+                </div>@*kisi sayısı*@
+                <div class="guests">
+                    <label for="guests">GÜN SAYISI</label><br /><br />
+                    @Html.EditorFor(model => model.gunsayisi, new { htmlAttributes = new { @class = "form-control" } })
+                </div>@*toplam gun*@
+                <div class="guests">
+                    <label for="guests">TOPLAM ÜCRET</label><br /><br />
+                    @Html.EditorFor(model => model.ucret, new { htmlAttributes = new { @class = "form-control" } })
+                </div>@*toplam ücret*@
+                <div class="dates">
+                    <div class="arrival">
+                        <label for="arrival">Giriş Tarihi Seçiniz</label><br />
+                        <input name="gtarih" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="10/03/2016" required />
+                    </div>
+                    <div class="departure">
+                        <label for="arrival">Çıkış Tarihi Seçiniz</label><br />
+                        <input name="ctarih" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="05/11/2016" required />
+                    </div>
+                </div>@*giris çıkış tarihleri*@
+                <input type="submit" value="Rezerve Et" class="btn" />
+            </form>
         }
         <div class="linkbox">
             <div class="links">

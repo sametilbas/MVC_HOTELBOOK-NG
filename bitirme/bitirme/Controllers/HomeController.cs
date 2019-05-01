@@ -108,85 +108,95 @@ namespace bitirme.Controllers
         public ActionResult rezerve(int odaid,int otelid,DateTime gtarih,DateTime ctarih,int kisi)
         {
             HomeIndexView hm = new HomeIndexView();
-            otel otel = db.otels.Find(otelid);
-            oteloda oteloda = db.otelodas.Find(odaid);
-            hm.otelad = otel.otelAdi;
-            hm.otelID = otelid;
-            int yil = (ctarih.Year - gtarih.Year) * 365;
-            int ay = 0;
-            if (ctarih.Month == 1 ||ctarih.Month==3||ctarih.Month==5||ctarih.Month==7||ctarih.Month==8||ctarih.Month==10||ctarih.Month==12)
+            if (Session["userID"] == null)
             {
-                if (gtarih.Month == 1 || gtarih.Month == 3 || gtarih.Month == 5 || gtarih.Month == 7 || gtarih.Month == 8 || gtarih.Month == 10 || gtarih.Month == 12)
-                {
-                    ay = (ctarih.Month - gtarih.Month) * 31;
-                }
-                else if(gtarih.Month == 4 || gtarih.Month == 6 || gtarih.Month == 9 || gtarih.Month == 11)
-                {
-                    ay = ((ctarih.Month * 31) - (gtarih.Month * 30));
-                }
-                else if (gtarih.Month == 2)
-                {
-                    ay = (ctarih.Month * 31) - (gtarih.Month * 28);
-                }
+                ViewBag.mesaj = "Rezervasyon yapmak için lütfen giriş yapıp tekrar deneyiniz!";
+                return View();
             }
-            else if (ctarih.Month == 4 || ctarih.Month == 6 || ctarih.Month == 9 || ctarih.Month == 11)
+            else if(Session["userID"]!=null)
             {
-                if (gtarih.Month == 1 || gtarih.Month == 3 || gtarih.Month == 5 || gtarih.Month == 7 || gtarih.Month == 8 || gtarih.Month == 10 || gtarih.Month == 12)
+                otel otel = db.otels.Find(otelid);
+                oteloda oteloda = db.otelodas.Find(odaid);
+                hm.otelad = otel.otelAdi;
+                hm.otelID = otelid;
+                int yil = (ctarih.Year - gtarih.Year) * 365;
+                int ay = 0;
+                if (ctarih.Month == 1 || ctarih.Month == 3 || ctarih.Month == 5 || ctarih.Month == 7 || ctarih.Month == 8 || ctarih.Month == 10 || ctarih.Month == 12)
                 {
-                    ay = (ctarih.Month * 30) - (gtarih.Month * 31);
+                    if (gtarih.Month == 1 || gtarih.Month == 3 || gtarih.Month == 5 || gtarih.Month == 7 || gtarih.Month == 8 || gtarih.Month == 10 || gtarih.Month == 12)
+                    {
+                        ay = (ctarih.Month - gtarih.Month) * 31;
+                    }
+                    else if (gtarih.Month == 4 || gtarih.Month == 6 || gtarih.Month == 9 || gtarih.Month == 11)
+                    {
+                        ay = ((ctarih.Month * 31) - (gtarih.Month * 30));
+                    }
+                    else if (gtarih.Month == 2)
+                    {
+                        ay = (ctarih.Month * 31) - (gtarih.Month * 28);
+                    }
                 }
-                else if (gtarih.Month == 4 || gtarih.Month == 6 || gtarih.Month == 9 || gtarih.Month == 11)
+                else if (ctarih.Month == 4 || ctarih.Month == 6 || ctarih.Month == 9 || ctarih.Month == 11)
                 {
-                    ay = (ctarih.Month - gtarih.Month) * 30;
+                    if (gtarih.Month == 1 || gtarih.Month == 3 || gtarih.Month == 5 || gtarih.Month == 7 || gtarih.Month == 8 || gtarih.Month == 10 || gtarih.Month == 12)
+                    {
+                        ay = (ctarih.Month * 30) - (gtarih.Month * 31);
+                    }
+                    else if (gtarih.Month == 4 || gtarih.Month == 6 || gtarih.Month == 9 || gtarih.Month == 11)
+                    {
+                        ay = (ctarih.Month - gtarih.Month) * 30;
+                    }
+                    else if (gtarih.Month == 2)
+                    {
+                        ay = (ctarih.Month * 30) - (gtarih.Month * 28);
+                    }
                 }
-                else if (gtarih.Month == 2)
+                else if (ctarih.Month == 2)
                 {
-                    ay = (ctarih.Month * 30) - (gtarih.Month * 28);
+                    if (gtarih.Month == 1 || gtarih.Month == 3 || gtarih.Month == 5 || gtarih.Month == 7 || gtarih.Month == 8 || gtarih.Month == 10 || gtarih.Month == 12)
+                    {
+                        ay = (ctarih.Month * 28) - (gtarih.Month * 31);
+                    }
+                    else if (gtarih.Month == 4 || gtarih.Month == 6 || gtarih.Month == 9 || gtarih.Month == 11)
+                    {
+                        ay = ((ctarih.Month * 28) - (gtarih.Month * 30));
+                    }
+                    else if (gtarih.Month == 2)
+                    {
+                        ay = (ctarih.Month * 28) - (gtarih.Month * 28);
+                    }
                 }
-            }
-            else if (ctarih.Month == 2)
-            {
-                if (gtarih.Month == 1 || gtarih.Month == 3 || gtarih.Month == 5 || gtarih.Month == 7 || gtarih.Month == 8 || gtarih.Month == 10 || gtarih.Month == 12)
+                int gun = 0;
+                if (ctarih.Month > gtarih.Month)
                 {
-                    ay = (ctarih.Month * 28) - (gtarih.Month * 31);
+                    if (ctarih.Day > gtarih.Day)
+                    {
+                        gun = ctarih.Day - gtarih.Day;
+                    }
+                    else if (ctarih.Day == gtarih.Day)
+                    {
+                        gun = 0;
+                    }
+                    else if (ctarih.Day < gtarih.Day)
+                    {
+                        gun = gtarih.Day - ctarih.Day;
+                    }
                 }
-                else if (gtarih.Month == 4 || gtarih.Month == 6 || gtarih.Month == 9 || gtarih.Month == 11)
-                {
-                    ay = ((ctarih.Month*28) - (gtarih.Month*30));
-                }
-                else if (gtarih.Month == 2)
-                {
-                    ay = (ctarih.Month * 28) - (gtarih.Month * 28);
-                }
-            }
-            int gun = 0;
-            if (ctarih.Month>gtarih.Month)
-            {
-                if (ctarih.Day>gtarih.Day)
+                else if (ctarih.Month == gtarih.Month)
                 {
                     gun = ctarih.Day - gtarih.Day;
                 }
-                else if (ctarih.Day == gtarih.Day)
-                {
-                    gun = 0;
-                }
-                else if(ctarih.Day < gtarih.Day)
-                {
-                    gun = gtarih.Day - ctarih.Day;
-                }
+                int topgun = yil + ay + gun;
+                hm.gunsayisi = topgun;
+                hm.ucret = (topgun * oteloda.odaucret);
+                return View(hm);
             }
-            else if (ctarih.Month == gtarih.Month)
-            {
-                gun = ctarih.Day - gtarih.Day;
-            }
-            int topgun = yil + ay + gun ;
-            hm.gunsayisi = topgun;
-            hm.ucret = (topgun * oteloda.odaucret);
-            return View(hm);
+            return View();
         }
         [HttpPost]
         public ActionResult rezerve(bitirme.Models.rezerve rez,bitirme.Models.HomeIndexView hm)
         {
+
             rezerve r = new rezerve();
             rez.ctarih = r.ctarih;
             r.Durum = true;

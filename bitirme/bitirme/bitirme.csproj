@@ -52,6 +52,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -2066,6 +2069,7 @@
     <Compile Include="Models\OurDbContext.cs" />
     <Compile Include="Models\ozellik.cs" />
     <Compile Include="Models\rezerve.cs" />
+    <Compile Include="Models\RezerveView.cs" />
     <Compile Include="Models\sehir.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2116,6 +2120,7 @@
     <Content Include="Views\user\oteldetay.cshtml" />
     <Content Include="Views\user\odadetay.cshtml" />
     <Content Include="Views\user\rezerve.cshtml" />
+    <Content Include="Views\user\rezerveliste.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

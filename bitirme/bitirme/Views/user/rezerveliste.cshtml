@@ -1,0 +1,106 @@
+﻿@model bitirme.Models.RezerveView
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>rezerveliste</title>
+    <link href="~/css/x.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div class="mockup">
+            <div class="top">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","user")">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-laugh-wink" style="color:blue;font-size:30px"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3" style="color:blue;font-size:25px;font-style:italic">Hadi Tatile</div>
+                </a>
+                <ul>
+                    <li><a href="@Url.Action("Index","user")">Hakkımızda</a></li>
+                    <li><a href="@Url.Action("oteller","user")">Şehirler</a></li>
+                    <li><a href="@Url.Action("odalar","user")">Odalar</a></li>
+                    <li><a href="@Url.Action("Index","user")">Şehirler</a></li>
+                </ul>
+                <ul style="margin-left:700px">
+                    <li><a href="@Url.Action("userUpdate","user",new { userid=Session["userID"]})">Profil</a></li>
+                    <li><a href="@Url.Action("rezerveliste","user",new { userid=Session["userID"]})">Rezervasyonlarım</a></li>
+                </ul>
+            </div>
+            <div class="outer-search">
+                <div class="search-filter">
+                    <div class="search-container">
+                        <i class="glyphicon glyphicon-search" style="opacity:0.6;font-size:25px;margin-left:5px"></i>
+                        <input type="text" id="search" name="search" style="font-style:italic" placeholder="Arayınız..." />
+                    </div><br /><br />
+                </div>
+            </div>
+            <div class="feeds" id="feeds">
+                <div class="today s-2">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Adınız</th>
+                                <th scope="col">Otel Adı</th>
+                                <th scope="col">Giriş Tarihi</th>
+                                <th scope="col">Çıkış Tarihi</th>
+                                <th scope="col">Kişi Sayısı</th>
+                                <th scope="col">Ücret</th>
+                                <th scope="col">Durum</th>
+                            </tr>
+                        </thead>
+                        @foreach (var rez in Model.rezerves)
+                        {
+                            foreach (var otel in Model.otels)
+                            {
+                                foreach (var user in Model.users)
+                                {
+                                    <tbody>
+                                        <tr>
+
+                                            @if (rez.otelID != otel.otelID)
+                                            {
+                                                break;
+                                            }
+                                            <th scope="row">@rez.rezerveID</th>
+                                            <td>@user.userName</td>
+                                            <td>@otel.otelAdi</td>
+                                            <td>@rez.gtarih</td>
+                                            <td>@rez.ctarih</td>
+                                            <td>@rez.kisi</td>
+                                            <td>@rez.ucret</td>
+                                            <td>@rez.Durum</td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            }
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+$(".feeds").scroll(function(){
+    if($(this).scrollTop() > 50){
+      $(".outer-search").addClass("doShadow");
+    }else{
+      $(".outer-search").removeClass("doShadow");
+    }
+  });
+    </script>
+</body>
+</html>

@@ -25,7 +25,6 @@
 
         </fieldset>
     </div>
-
     <div class="register">
         <fieldset>
             <legend>Kayıt</legend>
@@ -43,7 +42,10 @@
                 <input type="text" id="userPhone" name="userPhone" placeholder="Telefonunuz">
                 <input type="email" id="userEmail" name="userEmail" placeholder="your@gmail.com">
                 <input type="text" id="userNickName" name="userNickName" placeholder="Kullanıcı Adınız">
-                <input type="text" id="userPassword" name="userPassword" placeholder="Şifreniz">                
+                <input type="text" id="userPassword" name="userPassword" placeholder="Şifreniz">
+
+
+                <div class="g-recaptcha" data-sitekey="6Lf3A6EUAAAAAP7rJAupj3RC2x9i8i5ksAiAey4Q" style="transform:scale(0.60)"></div>
                 <button type="submit" class="btn-register">Kayıt</button>}
             <button class="btn-login" onclick="goToLoginPage();">
                 Üyemisiniz?
@@ -51,6 +53,8 @@
 
         </fieldset>
     </div>
+    @*<div class="g-recaptcha" data-sitekey="6Lf3A6EUAAAAAP7rJAupj3RC2x9i8i5ksAiAey4Q"></div>*@
     <script src="~/js/loginandregister.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 </html>

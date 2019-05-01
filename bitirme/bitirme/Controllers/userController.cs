@@ -1,7 +1,11 @@
 ﻿using bitirme.Models;
+using Newtonsoft.Json;
 using System;
+
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -10,6 +14,14 @@ namespace bitirme.Controllers
     public class userController : Controller
     {
         OurDbContext db = new OurDbContext();
+
+        public class CaptchaResult
+        {
+            [JsonProperty("success")]
+            public bool Success { get; set; }
+            [JsonProperty("error-codes")]
+            public List<string> ErrorCodes { get; set; }
+        }
         // GET: user
         public ActionResult Index()
         {
@@ -25,13 +37,46 @@ namespace bitirme.Controllers
         }
         [HttpPost]
         public ActionResult userRegister(bitirme.Models.User user)
+
         {
-            if (ModelState.IsValid)
+            var captcha = Request.Form["g-recaptcha-response"];
+
+            const string secret = "6Lf3A6EUAAAAAKd06PJgKtG8cKkSqSwdzLvzu4jX";
+
+            var restUrl = string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, captcha);
+
+            WebRequest req = WebRequest.Create(restUrl);
+            HttpWebResponse resp = req.GetResponse() as HttpWebResponse;
+
+            JsonSerializer serializer = new JsonSerializer();
+
+            CaptchaResult result = null;
+
+            using (var reader = new StreamReader(resp.GetResponseStream()))
             {
-                db.users.Add(user);
-                db.SaveChanges();
+                string resultObject = reader.ReadToEnd();
+                result = JsonConvert.DeserializeObject<CaptchaResult>(resultObject);
             }
-            return RedirectToAction("userRegister");
+
+            if (!result.Success)
+            {
+                ModelState.AddModelError("", "captcha mesajınız hatalı");
+                if (result.ErrorCodes != null)
+                {
+                    ModelState.AddModelError("", result.ErrorCodes[0]);
+                }
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.users.Add(user);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("userRegister");
+            }
+
+            return View();
         }
         public ActionResult userLogin()
         {
@@ -41,23 +86,22 @@ namespace bitirme.Controllers
         public ActionResult userLogin(bitirme.Models.User user)
         {
             var usr = db.users.Single(u => u.userNickName == user.userNickName && u.userPassword == user.userPassword);
-            if (usr!=null)
+            if (usr != null)
             {
                 Session["userID"] = usr.userID;
-                int a = (int)Session["userID"];
                 ViewBag.userID = usr.userID;
                 Session["userName"] = usr.userName;
                 return RedirectToAction("Index");
             }
             else
             {
-                ModelState.AddModelError("","Kullanıcı Adı veya Şifre Hatalı");
+                ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Hatalı");
             }
             return View();
         }
-        public ActionResult userUpdate(int? id)
-        {            
-            return View(db.users.Find(id));
+        public ActionResult userUpdate(int userid)
+        {
+            return View(db.users.Find(userid));
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -72,11 +116,9 @@ namespace bitirme.Controllers
             k.userNickName = user.userNickName;
             db.SaveChanges();
 
-            return RedirectToAction("userUpdate","user");
+            return RedirectToAction("Index", "user");
         }
-
-
-        public ActionResult oteller(string sad,int userid)
+        public ActionResult oteller(string sad, int userid)
         {
             HomeIndexView hm = new HomeIndexView();
             hm.otel = db.otels.Where(x => x.sehir == sad).ToList();
@@ -84,7 +126,7 @@ namespace bitirme.Controllers
             hm.oteloda = db.otelodas.Where(a => a.odaID > 0).Take(3).ToList();
             return View(hm);
         }
-        public ActionResult oteltarih(int oad,int userid)
+        public ActionResult oteltarih(int oad, int userid)
         {
             HomeIndexView hm = new HomeIndexView();
             otel otel = db.otels.Find(oad);
@@ -121,13 +163,14 @@ namespace bitirme.Controllers
         {
             return View();
         }
-        public ActionResult rezerve(int odaid, int otelid, DateTime gtarih, DateTime ctarih, int kisi,int userid)
+        public ActionResult rezerve(int odaid, int otelid, DateTime gtarih, DateTime ctarih, int kisi, int userid)
         {
             HomeIndexView hm = new HomeIndexView();
             otel otel = db.otels.Find(otelid);
             oteloda oteloda = db.otelodas.Find(odaid);
             hm.otelad = otel.otelAdi;
             hm.otelID = otelid;
+            hm.userID = userid;
             int yil = (ctarih.Year - gtarih.Year) * 365;
             int ay = 0;
             if (ctarih.Month == 1 || ctarih.Month == 3 || ctarih.Month == 5 || ctarih.Month == 7 || ctarih.Month == 8 || ctarih.Month == 10 || ctarih.Month == 12)
@@ -203,16 +246,35 @@ namespace bitirme.Controllers
         [HttpPost]
         public ActionResult rezerve(bitirme.Models.rezerve rez, bitirme.Models.HomeIndexView hm)
         {
-            rezerve r = new rezerve();
-            rez.ctarih = r.ctarih;
-            r.Durum = true;
-            rez.gtarih = r.gtarih;
-            rez.kisi = r.kisi;
-            rez.odaID = r.odaID;
-            rez.otelID = r.otelID;
-            db.rezerves.Add(r);
-            db.SaveChanges();
-            return View();
+            if (Session["userID"] != null)
+            {
+                rezerve r = new rezerve();
+                r.ctarih = hm.ctarih;
+                r.Durum = true;
+                r.gtarih = hm.gtarih;
+                r.gunsayisi = hm.gunsayisi;
+                r.kisi = hm.kisi;
+                r.odaID = hm.odaID;
+                r.otelID = hm.otelID;
+                r.ucret = hm.ucret;
+                r.userID = hm.userID;
+                db.rezerves.Add(r);
+                db.SaveChanges();
+                return RedirectToAction("Index", "user");
+            }
+            else
+            {
+                return RedirectToAction("userRegister", "user");
+            }
+        }
+        public ActionResult rezerveliste(int userid)
+        {
+            RezerveView rez = new RezerveView();
+            rez.rezerves = db.rezerves.Where(x => x.userID == userid).ToList();
+            rez.otels = db.otels.ToList();
+            rez.otelodas = db.otelodas.ToList();
+            rez.users = db.users.Where(x => x.userID == userid).ToList();
+            return View(rez);
         }
     }
 }

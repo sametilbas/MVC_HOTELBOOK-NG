@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>oteltarih</title>
+    <title>Rezervasyon</title>
     <link rel="stylesheet" href="~/css/oteltarih.css" />
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <div class="location">
                     @Html.HiddenFor(model => model.otelID)
                     @Html.HiddenFor(model => model.odaID)
-                    @Html.EditorFor(model => model.userID)
+                    @Html.HiddenFor(model => model.userID)
                     <div class="form-group">
                         <label for="guests">OTEL ADI</label><br /><br />
                         @Html.EditorFor(model => model.otelad, new { htmlAttributes = new { @class = "form-control" } })
