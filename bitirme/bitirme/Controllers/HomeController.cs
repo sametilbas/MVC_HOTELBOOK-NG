@@ -15,6 +15,19 @@ namespace bitirme.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            var a = db.rezerves.Count();
+            for (int i = 1; i < a; i++)
+            {
+                var b = db.rezerves.Find(i);
+                if (b.ctarih < DateTime.Now)
+                {
+                    if (b.Durum == true)
+                    {
+                        b.Durum = false;
+                        db.SaveChanges();
+                    }
+                }
+            }
             HomeIndexView hm = new HomeIndexView();
             hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
             hm.sehir = db.sehirs.Where(a => a.sehirID > 0).ToList();

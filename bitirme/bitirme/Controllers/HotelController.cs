@@ -16,7 +16,25 @@ namespace bitirme.Controllers
         // GET: Hotel
         public ActionResult Index()
         {
-            return View();
+            var a = db.rezerves.Count();
+            for (int i = 1; i <a; i++)
+            {
+                var b = db.rezerves.Find(i);
+                if (b.ctarih<DateTime.Now)
+                {
+                    if (b.Durum==true)
+                    {
+                        b.Durum = false;
+                        db.SaveChanges();
+                    }
+                }
+            }
+            int id = Convert.ToInt32(Session["otelID"]);
+            RezerveView rez = new RezerveView();
+            rez.rezerves = db.rezerves.Where(x => x.otelID == id).ToList();
+            rez.users = db.users.ToList();
+            rez.otelodas = db.otelodas.ToList();
+            return View(rez);
         }
         public ActionResult or()
         {
