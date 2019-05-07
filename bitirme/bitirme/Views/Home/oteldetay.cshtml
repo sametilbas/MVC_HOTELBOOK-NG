@@ -53,81 +53,83 @@
 
         <div class='hotel-card'>
             <h3>Otel Özellikler</h3>
-            @foreach (var oz in Model.ozelliks) {
-            <div class='hotel-card__traits-container'>
-                @if (oz.kategoriID == 9.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fa fa-wifi" aria-hidden="true"></i>
-                        <h4>Free Wi-Fi</h4>
-                        <p>Ücretsiz Wifi Ağı.</p>
-                    </div>
-                } else if (oz.kategoriID == 4.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fas fa-hamburger" aria-hidden="true"></i>
-                        <h4>Lokanta</h4>
-                        <p>7/24 Açık Lokanta</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 7.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fa fa-car" aria-hidden="true"></i>
-                        <h4>Otopark</h4>
-                        <p>Ücretsiz Otopark</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 8.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fas fa-dumbbell" aria-hidden="true"></i>
-                        <h4>Fitness Center</h4>
-                        <p>Ücretsiz Fitness Center</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 1.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fa fa-spa" aria-hidden="true"></i>
-                        <h4>Spa</h4>
-                        <p>Ücretli Spa</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 2.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fas fa-swimmer" aria-hidden="true"></i>
-                        <h4>Havuz</h4>
-                        <p>Ücretsiz Havuz</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 5.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fas fa-tshirt" aria-hidden="true"></i>
-                        <h4>Kuru Temizleme</h4>
-                        <p>Ücretli Kuru Temizleme</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 6.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fas fa-taxi" aria-hidden="true"></i>
-                        <h4>Taksi</h4>
-                        <p>Ücretli Taksi</p>
-                    </div>
-                }
-                else if (oz.kategoriID == 3.ToString())
-                {
-                    <div class='hotel-card__trait'>
-                        <i class="fas fa-cocktail" aria-hidden="true"></i>
-                        <h4>Club</h4>
-                        <p>Ücretli Club</p>
-                    </div>
-                }
+            @foreach (var oz in Model.ozelliks)
+            {
+                <div class='hotel-card__traits-container'>
+                    @if (oz.kategoriID == 9.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fa fa-wifi" aria-hidden="true"></i>
+                            <h4>Free Wi-Fi</h4>
+                            <p>Ücretsiz Wifi Ağı.</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 4.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fas fa-hamburger" aria-hidden="true"></i>
+                            <h4>Lokanta</h4>
+                            <p>7/24 Açık Lokanta</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 7.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fa fa-car" aria-hidden="true"></i>
+                            <h4>Otopark</h4>
+                            <p>Ücretsiz Otopark</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 8.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fas fa-dumbbell" aria-hidden="true"></i>
+                            <h4>Fitness Center</h4>
+                            <p>Ücretsiz Fitness Center</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 1.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fa fa-spa" aria-hidden="true"></i>
+                            <h4>Spa</h4>
+                            <p>Ücretli Spa</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 2.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fas fa-swimmer" aria-hidden="true"></i>
+                            <h4>Havuz</h4>
+                            <p>Ücretsiz Havuz</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 5.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                            <h4>Kuru Temizleme</h4>
+                            <p>Ücretli Kuru Temizleme</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 6.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fas fa-taxi" aria-hidden="true"></i>
+                            <h4>Taksi</h4>
+                            <p>Ücretli Taksi</p>
+                        </div>
+                    }
+                    else if (oz.kategoriID == 3.ToString())
+                    {
+                        <div class='hotel-card__trait'>
+                            <i class="fas fa-cocktail" aria-hidden="true"></i>
+                            <h4>Club</h4>
+                            <p>Ücretli Club</p>
+                        </div>
+                    }
 
-            </div>
+                </div>
             }
             <div class='hotel-card__line-break'></div>
             <h3>Açıklama</h3>
@@ -135,37 +137,42 @@
                 <h4>Lokasyon</h4>
                 @foreach (var i in Model.otel)
                 {
-                <p>
-                    <a href="https://goo.gl/maps/roegkqADZKk">
-                       @i.adres
-                    </a>
-                </p>
+                    <p>
+                        <a href="https://goo.gl/maps/roegkqADZKk">
+                            @i.adres
+                        </a>
+                    </p>
                 }
                 <p>A unique and different hotel, now renovated in all areas.  Friendly Vallarta All Inclusive Family Resort & Convention Center in Puerto Vallarta with the best beach in the area and spacious rooms full or partial Ocean view and private balcony or terrace. It has an excellent location 5 minutes from the airport, facing one of the most popular malls, and an entertainment center for children in the only kids club the beach.</p>
-                <h4>Rooms</h4>
-                <p>Rooms with a garden view, private balcony or terrace, work area, bathroom with tub, equipped for your comfort with a flat screen TV, a safe, air conditioning, and a dryer. Size: +452 sqft.</p>
-                <h4>All-Inclusive</h4>
-                <p>Friendly Vallarta's service is all-inclusive, so you don't have to worry about paying for extra food or drinks. Your vacation will be carefree in Friendly Vallarta, you will be able to enjoy the sea, sand and have a dream rest in the beaches of Puerto Vallarta.</p>
+                <h4>Odalar</h4>
+                <p>Odalarımız banyolar,yataklar,tuvaletler,şampuanlar vsvsvs doludur.</p>
+                <h4>Yorumlar</h4>
+                @foreach (var yorum in Model.yorums)
+                {
+                    <p>@yorum.yorum</p>
+
+                }
             </div>
             <div class='hotel-card__line-break'></div>
             <h3>Details</h3>
             <div class='hotel-card__description'>
-                <h4>Giriş Çıkış Saatleri/h4>
-                <p>Giriş 3:00pm</p>
-                <p>Çıkış 12:00pm</p>
-                <h4>Havaalanına Yakın</h4>
-                <p>
-                    <a href="https://www.puertovallarta.net/fast_facts/airport_info">
-                        Aeropuerto de Puerto Vallarta (PVR)
-                    </a>
-                </p>
-                <p>Located 4.6km (2.9mi)away from Friendly Vallarta</p>
-                <h4>Transportation</h4>
-                <p>Ride comfortably: <a href="">Uber</a> (approx MX$56-72 from airport) <a href=""></a>
+                <h4>
+                    Giriş Çıkış Saatleri/h4>
+                    <p>Giriş 3:00pm</p>
+                    <p>Çıkış 12:00pm</p>
+                    <h4>Havaalanına Yakın</h4>
+                    <p>
+                        <a href="https://www.puertovallarta.net/fast_facts/airport_info">
+                            Aeropuerto de Puerto Vallarta (PVR)
+                        </a>
+                    </p>
+                    <p>Located 4.6km (2.9mi)away from Friendly Vallarta</p>
+                    <h4>Transportation</h4>
+                    <p>Ride comfortably: <a href="">Uber</a> (approx MX$56-72 from airport) <a href=""></a>
             </div>
             @foreach (var item in Model.otel)
             {
-            <a href="@Url.Action("oteltarih", "Home", new { oad = item.otelID })" target='_blank'><button class='hotel__cta-button'>Odalara Bak</button></a>
+                <a href="@Url.Action("oteltarih", "Home", new { oad = item.otelID })" target='_blank'><button class='hotel__cta-button'>Odalara Bak</button></a>
             }
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.69753378142!2d-105.23957868458879!3d20.641182006270927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84214570013f7283%3A0x76285da9fb4290e9!2sFriendly+Vallarta+All+Inclusive+Family+Resort+%26+Convention+Center!5e0!3m2!1sen!2sus!4v1550344543659" class='google-map' allowfullscreen></iframe>
             <!--<div class='hotel-card__banner'></div>-->

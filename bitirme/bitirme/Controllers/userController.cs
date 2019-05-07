@@ -292,9 +292,9 @@ namespace bitirme.Controllers
         [HttpPost]
         public ActionResult Yorumla(bitirme.Models.Yorums yor)
         {
-            ViewBag.otelID = yor.otelID;
-            Session["userID"] = yor.userID;
-            return RedirectToAction("Index");
+                db.yorums.Add(yor);
+                db.SaveChanges();
+                return RedirectToAction("Index","Home");
         }
     }
 }

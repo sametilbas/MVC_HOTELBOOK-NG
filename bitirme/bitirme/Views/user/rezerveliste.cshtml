@@ -1,5 +1,6 @@
 ﻿@model bitirme.Models.RezerveView
-@{
+
+@{  
     Layout = null;
 }
 
@@ -112,6 +113,8 @@
                                         {
                                             <div class="modal-body">
                                                 @*Buraya yorumlar gelecek*@
+                                                <input type="hidden" name="otelID" value="@rez.otelID"/>
+                                                <input type="hidden" name="userID" value="@rez.userID"/>
                                                 <label class="col-form-label">Yorumunuz:</label>
                                                 <input type="text" name="yorum" placeholder="Yorum Yapınız.." style="font-family:Georgia;width:220px;" class="form-control" /><br />
                                                 <label class="col-form-label">Puanınız:</label>

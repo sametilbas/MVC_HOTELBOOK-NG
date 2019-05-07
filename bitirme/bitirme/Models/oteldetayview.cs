@@ -12,5 +12,6 @@ namespace bitirme.Models
         public IEnumerable<oteloda> oteloda { get; set; }
         public IEnumerable<ozellik> ozelliks { get; set; }
         public IEnumerable<kategori> kategoris { get; set; }
+        public IEnumerable<Yorums> yorums { get; set; }
     }
 }

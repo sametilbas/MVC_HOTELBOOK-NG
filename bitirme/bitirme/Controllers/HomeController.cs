@@ -115,6 +115,7 @@ namespace bitirme.Controllers
             ov.oteloda = db.otelodas.Where(x => x.otelID == oad).ToList();
             ov.kategoris = db.kategoris.Where(x=>x.kategoriID>0).ToList();
             ov.ozelliks = db.ozelliks.Where(x => x.otelID == oad).ToList();
+            ov.yorums = db.yorums.Where(x => x.otelID == oad).Take(3).ToList();
             return View(ov);
         }
         public ActionResult odadetay()

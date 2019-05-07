@@ -1,0 +1,79 @@
+﻿@model bitirme.Models.RezerveView
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Adınız</th>
+            <th scope="col">Otel Adı</th>
+            <th scope="col">Giriş Tarihi</th>
+            <th scope="col">Çıkış Tarihi</th>
+            <th scope="col">Kişi Sayısı</th>
+            <th scope="col">Ücret</th>
+            <th scope="col">Durum</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    @foreach (var rez in Model.rezerves)
+    {
+        foreach (var otel in Model.otels)
+        {
+            foreach (var user in Model.users)
+            {
+                <tbody>
+                    <tr>
+                        @if (rez.otelID != otel.otelID)
+                        {
+                            break;
+                        }
+                        <th scope="row">@rez.rezerveID</th>
+                        <td>@user.userName</td>
+                        <td>@otel.otelAdi</td>
+                        <td>@rez.gtarih</td>
+                        <td>@rez.ctarih</td>
+                        <td>@rez.kisi</td>
+                        <td>@rez.ucret</td>
+                        <td>@rez.Durum</td>
+                        @if (rez.Durum == false)
+                        {
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Yorum Yap</button>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>İptal Et</td>
+                        }
+                    </tr>
+                </tbody>
+            }
+        }
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Yorumla</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @using (Html.BeginForm("Yorumla", "user", FormMethod.Post))
+                    {
+                        <div class="modal-body">
+                            @*Buraya yorumlar gelecek*@
+                            <label class="col-form-label">Yorumunuz:</label>
+                            <input type="text" name="yorum" placeholder="Yorum Yapınız.." style="font-family:Georgia;width:220px;" class="form-control" /><br />
+                            <label class="col-form-label">Puanınız:</label>
+                            <input name="puan" type="number" style="font-family:Georgia;width:220px;" placeholder="0-5 arası puanla" class="form-control" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="submit" class="btn btn-primary">Gönder</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+</table>

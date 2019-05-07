@@ -2122,6 +2122,7 @@
     <Content Include="Views\user\odadetay.cshtml" />
     <Content Include="Views\user\rezerve.cshtml" />
     <Content Include="Views\user\rezerveliste.cshtml" />
+    <Content Include="Views\Shared\rezervepartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
