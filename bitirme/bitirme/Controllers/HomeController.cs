@@ -16,22 +16,25 @@ namespace bitirme.Controllers
         public ActionResult Index()
         {
             var a = db.rezerves.Count();
-            for (int i = 1; i < a; i++)
+            if (a!=0)
             {
-                var b = db.rezerves.Find(i);
-                if (b.ctarih < DateTime.Now)
+                for (int i = 1; i < a; i++)
                 {
-                    if (b.Durum == true)
+                    var b = db.rezerves.Find(i);
+                    if (b.ctarih < DateTime.Now)
                     {
-                        b.Durum = false;
-                        db.SaveChanges();
+                        if (b.Durum == true)
+                        {
+                            b.Durum = false;
+                            db.SaveChanges();
+                        }
                     }
                 }
             }
             HomeIndexView hm = new HomeIndexView();
-            hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
-            hm.sehir = db.sehirs.Where(a => a.sehirID > 0).ToList();
-            hm.oteloda = db.otelodas.Where(a => a.odaID > 0).Take(3).ToList();
+            hm.otel = db.otels.Where(x => x.otelID > 0).Take(3).ToList();
+            hm.sehir = db.sehirs.Where(x => x.sehirID > 0).ToList();
+            hm.oteloda = db.otelodas.Where(x => x.odaID > 0).Take(3).ToList();
             return View(hm);
         }
         public ActionResult Search(bitirme.Models.HomeIndexView hı)

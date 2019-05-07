@@ -76,6 +76,7 @@ namespace bitirme.Controllers
                 {
                     Session["otelID"] = usr.otelID.ToString();
                     Session["otelkullaniciAdi"] = usr.otelkullaniciAdi.ToString();
+                    ViewBag.otelad = usr.otelAdi;
                     ViewBag.otelID = usr.otelID;
                     return RedirectToAction("Index");
                 }
@@ -298,6 +299,12 @@ namespace bitirme.Controllers
                 }
             }
             return View(s);
+        }
+        public ActionResult logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
 
     }

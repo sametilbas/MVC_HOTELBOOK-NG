@@ -39,9 +39,9 @@ namespace bitirme.Controllers
                 }
             }
             HomeIndexView hm = new HomeIndexView();
-            hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
-            hm.sehir = db.sehirs.Where(a => a.sehirID > 0).ToList();
-            hm.oteloda = db.otelodas.Where(a => a.odaID > 0).Take(3).ToList();
+            hm.otel = db.otels.Where(x => x.otelID > 0).Take(3).ToList();
+            hm.sehir = db.sehirs.Where(x => x.sehirID > 0).ToList();
+            hm.oteloda = db.otelodas.Where(x => x.odaID > 0).Take(3).ToList();
             return View(hm);
         }
         public ActionResult userRegister()
@@ -288,6 +288,13 @@ namespace bitirme.Controllers
             rez.otelodas = db.otelodas.ToList();
             rez.users = db.users.Where(x => x.userID == userid).ToList();
             return View(rez);
+        }
+        [HttpPost]
+        public ActionResult Yorumla(bitirme.Models.Yorums yor)
+        {
+            ViewBag.otelID = yor.otelID;
+            Session["userID"] = yor.userID;
+            return RedirectToAction("Index");
         }
     }
 }

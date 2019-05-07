@@ -2072,6 +2072,7 @@
     <Compile Include="Models\RezerveView.cs" />
     <Compile Include="Models\sehir.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Yorums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

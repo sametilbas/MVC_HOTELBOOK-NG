@@ -20,6 +20,7 @@ namespace bitirme.Models
         public DbSet<User> users { get; set; }
         public DbSet<sehir> sehirs { get; set; }
         public DbSet<rezerve> rezerves { get; set; }
+        public DbSet<Yorums> yorums { get; set; }
     }
    
 }
