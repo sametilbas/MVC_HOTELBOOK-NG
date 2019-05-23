@@ -1,4 +1,4 @@
-﻿
+﻿@model bitirme.Models.oteldetayview
 @{
     Layout = null;
 }
@@ -8,10 +8,61 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>odadetay</title>
+    <title>oteldetay</title>
+    <link rel="stylesheet" href="~/css/oteldetay.css" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/css/oteldetayslider.css" />
 </head>
 <body>
-    <div> 
-    </div>
+    <section>
+        @foreach (var item in Model.oteloda)
+        {
+            <h2><strong>@item.odaAdi</strong></h2>
+            <div class='hotel__line-break'></div>
+            <center>
+                <a href="https://goo.gl/maps/roegkqADZKk">Talimatlar</a>
+                -
+                <a href="https://www.friendlyvallarta.com/">Website</a>
+            </center>
+            <div class='hotel__line-break'></div>
+            <img src="@Url.Content(item.odaresim)">
+            <br /><br /><br />
+            <p>Oda Açıklaması</p>
+            <div class='hotel__line-break'></div>
+            <p>
+                @item.aciklama
+            </p>
+            <p>
+            </p>
+            <div class='hotel__line-break'></div>
+        }
+
+
+    </section>
+    <footer>
+        <div class='footer__body'>
+            <div class='footer__social-media'>
+                <ul>
+                    <li><a href=''><i class="fa fa-facebook color--facebook" aria-hidden="true">FACEBOOK</i></a></li>
+                    <li><a href=''><i class="fa fa-twitter color--twitter" aria-hidden="true">TWİTTER</i></a></li>
+                    <li><a href=''><i class="fa fa-linkedin color--linkedin" aria-hidden="true">LİNKEDİN</i></a></li>
+                    <li><a href=''><i class="fa fa-instagram color--instagram" aria-hidden="true">İNSTAGRAM</i></a></li>
+                </ul>
+            </div>
+            <div class='footer__more-info'>
+                <p><strong>HADİ TATİLE</strong> Siz Kullanıcılar için Otellerin bir arada sizlerin işlerinizi kolaylaştırmak amacıyla toplandığı platformdur.</p>
+            </div>
+        </div>
+        <div class='footer__nav-bar'>
+            <ul>
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li><a href="@Url.Action("Index","Home")">Şehirler</a></li>
+                <li><a href="@Url.Action("Index","Home")">Oteller</a></li>
+            </ul>
+            <span>&copy;@DateTime.Now.Year HADİ TATİLE </span>
+        </div>
+    </footer>
+    <script src="~/js/oteldetay.js"></script>
 </body>
 </html>

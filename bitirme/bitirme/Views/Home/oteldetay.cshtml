@@ -28,15 +28,12 @@
             <div class='hotel__line-break'></div>
             <img src="@Url.Content(item.or)">
             <br /><br /><br />
-            <p>Otel Açıklamalar:</p>
+            <p>Otel Açıklaması</p>
             <div class='hotel__line-break'></div>
             <p>
-                @item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama
-                @item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama
+                @item.otelaciklama
             </p>
             <p>
-                @item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama
-                @item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama@item.otelaciklama.
             </p>
             <div class='hotel__line-break'></div>
 
@@ -146,6 +143,8 @@
                 <p>A unique and different hotel, now renovated in all areas.  Friendly Vallarta All Inclusive Family Resort & Convention Center in Puerto Vallarta with the best beach in the area and spacious rooms full or partial Ocean view and private balcony or terrace. It has an excellent location 5 minutes from the airport, facing one of the most popular malls, and an entertainment center for children in the only kids club the beach.</p>
                 <h4>Odalar</h4>
                 <p>Odalarımız banyolar,yataklar,tuvaletler,şampuanlar vsvsvs doludur.</p>
+                <h4>Otel Puanı(5 üzerinden)</h4>
+                <p style="font-weight:600;font-size:large">@ViewBag.puan</p>
                 <h4>Yorumlar</h4>
                 @foreach (var yorum in Model.yorums)
                 {
@@ -154,21 +153,12 @@
                 }
             </div>
             <div class='hotel-card__line-break'></div>
-            <h3>Details</h3>
+            <h3>Detaylar</h3>
             <div class='hotel-card__description'>
-                <h4>
-                    Giriş Çıkış Saatleri/h4>
+                <h4>Giriş Çıkış Saatleri</h4>
                     <p>Giriş 3:00pm</p>
                     <p>Çıkış 12:00pm</p>
-                    <h4>Havaalanına Yakın</h4>
-                    <p>
-                        <a href="https://www.puertovallarta.net/fast_facts/airport_info">
-                            Aeropuerto de Puerto Vallarta (PVR)
-                        </a>
-                    </p>
-                    <p>Located 4.6km (2.9mi)away from Friendly Vallarta</p>
-                    <h4>Transportation</h4>
-                    <p>Ride comfortably: <a href="">Uber</a> (approx MX$56-72 from airport) <a href=""></a>
+                   
             </div>
             @foreach (var item in Model.otel)
             {
@@ -207,152 +197,3 @@
     <script src="~/js/oteldetay.js"></script>
 </body>
 </html>
-
-@*<section>
-        <div class="container">
-            <table class="table table-fixed">
-                <thead>
-                    <tr>
-                        <th class="col-xs-3">
-                            <label>odaadi</label>
-                        </th>
-                        <th class="col-xs-3">
-                            <label>odakisi</label>
-                        </th>
-
-                        <th class="col-xs-3">
-                            <label>ücret</label>
-                        </th>
-                        <th class="col-xs-3">
-                            <label>odaaciklama</label>
-                        </th>
-                        <th class="col-xs-3">
-                            <label>resim</label>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var item in Model.oteloda)
-                    {
-                        <tr>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.odaAdi)
-                            </td>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.odakisi)
-                            </td>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.odaucret)
-                            </td>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.aciklama)
-                            </td>
-                            <td class="col-xs-3">
-                                <img src="@Url.Content(item.odaresim)" width="75" />
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <table class="table table-fixed">
-                <thead>
-                    <tr>
-                        <th class="col-xs-3">
-                            <label>kategori</label>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var item in Model.ozelliks)
-                    {
-                        foreach (var ka in Model.kategoris)
-                        {
-                            if (ka.kategoriID == Int32.Parse(item.kategoriID))
-                            {
-                                <tr>
-                                    <td class="col-xs-3">
-                                        @Html.DisplayFor(modelItem => ka.kategoriad)
-                                    </td>
-                                </tr>
-                            }
-                        }
-                    }
-                </tbody>
-            </table>
-        </div>
-    </section>*@
-@*<section>
-        <div class="container">
-            <table class="table table-fixed">
-                <thead>
-                    <tr>
-                        <th class="col-xs-3">
-                            <label>odaadi</label>
-                        </th>
-                        <th class="col-xs-3">
-                            <label>odakisi</label>
-                        </th>
-
-                        <th class="col-xs-3">
-                            <label>ücret</label>
-                        </th>
-                        <th class="col-xs-3">
-                            <label>odaaciklama</label>
-                        </th>
-                        <th class="col-xs-3">
-                            <label>resim</label>
-                        </th>
-                        <th class="col-xs-3">İşlemler</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var item in Model.otel)
-                    {
-                        <tr>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.otelAdi)
-                            </td>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.otelEmail)
-                            </td>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.otelaciklama)
-                            </td>
-                            <td class="col-xs-3">
-                                @Html.DisplayFor(modelItem => item.otelTel)
-                            </td>
-                            <td class="col-xs-3">
-                                <img src="@Url.Content(item.or)" width="75" />
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </section>
-    <section>
-        <div class="container">
-            <table class="table table-fixed">
-                <thead>
-                    <tr>
-                        <th class="col-xs-3">
-                            <label>resim</label>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var item in Model.otelresim)
-                    {
-                        <tr>
-                            <td class="col-xs-3">
-                                <img src="@Url.Content(item.otelresimAdi)" width="75" />
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </section>*@

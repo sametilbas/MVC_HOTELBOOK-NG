@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,7 +28,7 @@ namespace bitirme.Controllers
         public ActionResult Index()
         {
             var a = db.rezerves.Count();
-            for (int i = 1; i < a; i++)
+            for (int i = 1; i < a-1; i++)
             {
                 var b = db.rezerves.Find(i);
                 if (b.ctarih < DateTime.Now)
@@ -37,6 +39,7 @@ namespace bitirme.Controllers
                         db.SaveChanges();
                     }
                 }
+                
             }
             HomeIndexView hm = new HomeIndexView();
             hm.otel = db.otels.Where(x => x.otelID > 0).Take(3).ToList();
@@ -273,6 +276,27 @@ namespace bitirme.Controllers
                 r.userID = hm.userID;
                 db.rezerves.Add(r);
                 db.SaveChanges();
+
+                var a = db.otels.Find(hm.otelID);
+                var b = db.users.Find(hm.userID);
+                var body = new StringBuilder();
+                body.AppendLine("Otel Adı:"+ a.otelAdi + "\n" + "Kişi Sayısı:" + hm.kisi + "\n" + "Giriş Tarihi:" + hm.gtarih  + "\n" + "Çıkış Tarihi:" + hm.ctarih + "\n" + "Ücret:"+ hm.ucret);
+                MailMessage mm = new MailMessage("lbssmt66@gmail.com", b.userEmail);
+                mm.Subject = "Hadi Tatile Rezervasyon Maili";
+
+                mm.Body =body.ToString();
+                mm.IsBodyHtml = false;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+
+                NetworkCredential nc = new NetworkCredential("lbssmt66@gmail.com","smtlbs66");
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = nc;
+                smtp.Send(mm);
+
+
                 return RedirectToAction("Index", "user");
             }
             else
@@ -288,6 +312,13 @@ namespace bitirme.Controllers
             rez.otelodas = db.otelodas.ToList();
             rez.users = db.users.Where(x => x.userID == userid).ToList();
             return View(rez);
+        }
+        public ActionResult rezerveiptal(int rez)
+        {
+            var rezerve = db.rezerves.Find(rez);
+            rezerve.Durum = false;
+            db.SaveChanges();
+            return RedirectToAction("Index","user");
         }
         [HttpPost]
         public ActionResult Yorumla(bitirme.Models.Yorums yor)

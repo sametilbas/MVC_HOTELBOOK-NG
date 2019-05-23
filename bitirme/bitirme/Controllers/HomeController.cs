@@ -116,11 +116,28 @@ namespace bitirme.Controllers
             ov.kategoris = db.kategoris.Where(x=>x.kategoriID>0).ToList();
             ov.ozelliks = db.ozelliks.Where(x => x.otelID == oad).ToList();
             ov.yorums = db.yorums.Where(x => x.otelID == oad).Take(3).ToList();
+
+            var otel = db.yorums.ToList();
+            double puan = 0;
+            int sayi = 0;
+            foreach (var item in otel)
+            {
+                if (item.otelID==oad)
+                {
+                    puan += item.puan;
+                    sayi++;
+                }
+            }
+            puan = puan / sayi;
+            ViewBag.puan = puan;
             return View(ov);
         }
-        public ActionResult odadetay()
+        public ActionResult odadetay(int oad)
         {
-            return View();
+            oteldetayview ov = new oteldetayview();
+            ov.otel = db.otels.Where(x => x.otelID>0).ToList();
+            ov.oteloda = db.otelodas.Where(x => x.odaID == oad).ToList();
+            return View(ov);
         }
         public ActionResult rezerve(int odaid,int otelid,DateTime gtarih,DateTime ctarih,int kisi)
         {
