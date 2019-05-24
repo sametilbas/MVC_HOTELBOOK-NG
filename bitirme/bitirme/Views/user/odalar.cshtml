@@ -71,54 +71,99 @@
                     }
                 </div>
                 <div class="today s-2">
-                    @foreach (var item in Model.oteloda)
+                    @foreach (var q in Model.rezer)
                     {
-                        if (Model.rezer.Count() != 0)
+                        foreach (var item in Model.oteloda)
                         {
-                            foreach (var q in Model.rezer)
+                            if (ViewBag.otelID == item.otelID)
                             {
-                                for (int i = 1; i <= 1; i++)
+                                if (item.odaID == q.odaID)
                                 {
-                                    if (item.odaID == q.odaID)
+                                    if ((ViewBag.ctarih < q.gtarih && ViewBag.ctarih >= DateTime.Now && ViewBag.gtarih >= DateTime.Now && q.kisi == ViewBag.kisi))
                                     {
-                                        if ((ViewBag.ctarih < q.gtarih && ViewBag.ctarih >= DateTime.Now && ViewBag.gtarih >= DateTime.Now && q.kisi == ViewBag.kisi)
-                                            || (q.gtarih <= ViewBag.ctarih && q.ctarih >= ViewBag.ctarih && q.kisi == ViewBag.kisi && q.Durum == false)
-                                            || (q.ctarih < ViewBag.ctarih && q.kisi == ViewBag.kisi))
-                                        {
-                                            <div class="card">
-                                                <div class="add">
-                                                    <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
-                                                </div>
-                                                <img src="@Url.Content(item.odaresim)" />
-                                                <div class="card-footer">
-                                                    <div class="card-info">
-                                                        <span class="card-maker" style="font-weight:700">
-                                                            Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID,userid=ViewBag.userID,gtarih=ViewBag.gtarih,ctarih=ViewBag.ctarih,kisi=ViewBag.kisi})"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
-                                                        </span>
-                                                    </div>
+                                        <div class="card">
+                                            <div class="add">
+                                                <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                            </div>
+                                            <img src="@Url.Content(item.odaresim)" />
+                                            <div class="card-footer">
+                                                <div class="card-info">
+                                                    <span class="card-maker" style="font-weight:700">
+                                                        Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID, userid = ViewBag.userID, gtarih = ViewBag.gtarih, ctarih = ViewBag.ctarih, kisi = ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                                    </span>
                                                 </div>
                                             </div>
-                                        }
+                                        </div>
+                                    }
+                                    else if (q.gtarih <= ViewBag.ctarih && q.ctarih >= ViewBag.ctarih && q.kisi == ViewBag.kisi && q.Durum == false)
+                                    {
+                                        <div class="card">
+                                            <div class="add">
+                                                <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                            </div>
+                                            <img src="@Url.Content(item.odaresim)" />
+                                            <div class="card-footer">
+                                                <div class="card-info">
+                                                    <span class="card-maker" style="font-weight:700">
+                                                        Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID, userid = ViewBag.userID, gtarih = ViewBag.gtarih, ctarih = ViewBag.ctarih, kisi = ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (q.ctarih < ViewBag.ctarih && q.kisi == ViewBag.kisi)
+                                    {
+                                        <div class="card">
+                                            <div class="add">
+                                                <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                            </div>
+                                            <img src="@Url.Content(item.odaresim)" />
+                                            <div class="card-footer">
+                                                <div class="card-info">
+                                                    <span class="card-maker" style="font-weight:700">
+                                                        Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID, userid = ViewBag.userID, gtarih = ViewBag.gtarih, ctarih = ViewBag.ctarih, kisi = ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="card">
+                                            <div class="add">
+                                                <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                            </div>
+                                            <img src="@Url.Content(item.odaresim)" />
+                                            <div class="card-footer">
+                                                <div class="card-info">
+                                                    <span class="card-maker" style="font-weight:700">
+                                                        Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID, userid = ViewBag.userID, gtarih = ViewBag.gtarih, ctarih = ViewBag.ctarih, kisi = ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     }
                                 }
+                                else
+                                {
+                                    <div class="card">
+                                        <div class="add">
+                                            <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
+                                        </div>
+                                        <img src="@Url.Content(item.odaresim)" />
+                                        <div class="card-footer">
+                                            <div class="card-info">
+                                                <span class="card-maker" style="font-weight:700">
+                                                    Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID, userid = ViewBag.userID, gtarih = ViewBag.gtarih, ctarih = ViewBag.ctarih, kisi = ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
                             }
                         }
-                        else
-                        {
-                            <div class="card">
-                                <div class="add">
-                                    <p><b><a href="@Url.Action("odadetay", "user", new { oad = item.otelID })"><i class="glyphicon glyphicon-plus"></i></a></b></p>
-                                </div>
-                                <img src="@Url.Content(item.odaresim)" />
-                                <div class="card-footer">
-                                    <div class="card-info">
-                                        <span class="card-maker" style="font-weight:700">
-                                            Oda Ücreti:@item.odaucret TL <b><a href="@Url.Action("rezerve", "user", new { odaid = item.odaID, otelid = item.otelID,userid=ViewBag.userID,gtarih=ViewBag.gtarih,ctarih=ViewBag.ctarih,kisi=ViewBag.kisi })"><i class=" btn-info" style="margin-left:100px">Rezerve Et</i></a></b>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+
                     }
                 </div>
                 <div class="yesterday s-2">

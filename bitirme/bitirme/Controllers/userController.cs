@@ -159,6 +159,7 @@ namespace bitirme.Controllers
             ViewBag.ctarih = hı.ctarih;
             ViewBag.userID = hı.userID;
             ViewBag.kisi = hı.kisi;
+            ViewBag.otelID = hı.otelID;
             hm.otel = db.otels.Where(a => a.otelID > 0).Take(3).ToList();
             hm.sehir = db.sehirs.Where(a => a.sehirID > 0).Take(3).ToList();
             hm.oteloda = db.otelodas.Where(x => x.otelID == hı.otelID).ToList();
