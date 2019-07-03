@@ -292,7 +292,7 @@ namespace bitirme.Controllers
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
 
-                NetworkCredential nc = new NetworkCredential("lbssmt66@gmail.com","smtlbs66");
+                NetworkCredential nc = new NetworkCredential("cccccc","xxxxxx");//buradaki ccccc ye mail adresi, xxxx yerine mailin şifresi gelecek
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = nc;
                 smtp.Send(mm);
